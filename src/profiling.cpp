@@ -1,7 +1,8 @@
-#include<iostream>
+#include <iostream>
+#include "calclib/calclib.hpp"
 
 int main() {
-	cout << "Sample profiling source code" << endl;
+	std::cout << "Sample profiling source code " << calcLib::add(1,2) << "\n";
 	return 0;
 }
 
