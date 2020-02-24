@@ -1,0 +1,4 @@
+xlogin01 100 (základ GUI a základní mat. operace)
+xlogin02 100 (pokročilé mat. operace)
+xlogin03 90 (profiling, instalátor)
+xlogin04 110 (testy, dokumentace)
