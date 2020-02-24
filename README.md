@@ -1,19 +1,17 @@
-Prostredi
+Prostředí
 ---------
 
 Ubuntu 64bit
-Windows 64bit
 
-Autori
+Autoři
 ------
 
-Nazev tymu
-- xlogin01 jmeno prijmeni 
-- xlogin02 jmeno prijmeni 
-- xlogin03 jmeno prijmeni 
-- xlogin04 jmeno prijmeni 
+Fitutubies
+- xgulci00 Sabína Gulčíková
+- xmanak20 Radek Maňák
+- xmisti00 Matej Mištík
+- xzatov00 Martin Zaťovič
 
 Licence
 -------
-
-Tento program je poskytovan...
+GPLv3
