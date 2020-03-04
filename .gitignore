@@ -30,3 +30,10 @@
 
 # Build files
 build/
+
+#Clion files
+.idea/
+cmake-build-debug/
+
+#Qt-creator files
+CMakeLists.txt.user
