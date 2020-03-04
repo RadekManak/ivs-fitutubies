@@ -1,7 +1,9 @@
-#include <iostream>
-#include "calclib/calclib.hpp"
+#include <QtWidgets/QApplication>
+#include "qt/mainwindow.h"
 
-int main() {
-	std::cout << "Sample calculator source code \n" << calcLib::add(3.14, 42) << '\n';
-	return 0;
+int main(int argc, char** argv) {
+    QApplication app(argc, argv);
+    MainWindow w;
+    w.show();
+    return app.exec();
 }
