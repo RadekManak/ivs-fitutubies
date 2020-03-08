@@ -17,8 +17,8 @@ jobs:
     - name: Create Build Environment
       run: cmake -E make_directory ${{runner.workspace}}/build
     
-    - name: Install Qt5 widgets
-      run: sudo apt-get install libqwt-qt5-dev
+    - name: Install Qt5-base package
+      run: sudo apt-get install qtbase5-dev
 
     - name: Configure CMake
       # Use a bash shell so we can use the same syntax for environment variable
