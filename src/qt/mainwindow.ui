@@ -25,9 +25,12 @@
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(223,223,223);
     border-radius: 12px;
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(223,223,223);
 }
 
 QPushButton:pressed {
@@ -35,13 +38,10 @@ QPushButton:pressed {
                                       stop: 0 #dadbde, stop: 1 #f6f7fa);
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
      <string>tan</string>
@@ -58,9 +58,12 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(223,223,223);
     border-radius: 12px;
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(223,223,223);
 }
 
 QPushButton:pressed {
@@ -68,13 +71,10 @@ QPushButton:pressed {
                                       stop: 0 #dadbde, stop: 1 #f6f7fa);
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
      <string>,</string>
@@ -91,23 +91,23 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(152, 201, 206);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(152, 201, 206);
     border-radius: 12px;
-    background-color: rgb(152, 201, 206);
+    background-color: rgb(152, 201, 206)
 }
 
 QPushButton:pressed {
     background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+                                      stop: 0 #dadbde, stop: 1 rgb(152, 201, 206));
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
      <string>0</string>
@@ -124,9 +124,12 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(223,223,223);
     border-radius: 12px;
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(223,223,223);
 }
 
 QPushButton:pressed {
@@ -134,13 +137,10 @@ QPushButton:pressed {
                                       stop: 0 #dadbde, stop: 1 #f6f7fa);
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
      <string>=</string>
@@ -157,9 +157,12 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(223,223,223);
     border-radius: 12px;
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(223,223,223);
 }
 
 QPushButton:pressed {
@@ -167,13 +170,10 @@ QPushButton:pressed {
                                       stop: 0 #dadbde, stop: 1 #f6f7fa);
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
      <string>x!</string>
@@ -190,9 +190,12 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(223,223,223);
     border-radius: 12px;
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(223,223,223);
 }
 
 QPushButton:pressed {
@@ -200,13 +203,10 @@ QPushButton:pressed {
                                       stop: 0 #dadbde, stop: 1 #f6f7fa);
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
      <string>cos</string>
@@ -223,9 +223,12 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(223,223,223);
     border-radius: 12px;
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(223,223,223);
 }
 
 QPushButton:pressed {
@@ -233,13 +236,10 @@ QPushButton:pressed {
                                       stop: 0 #dadbde, stop: 1 #f6f7fa);
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
      <string>log</string>
@@ -256,9 +256,12 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(223,223,223);
     border-radius: 12px;
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(223,223,223);
 }
 
 QPushButton:pressed {
@@ -266,13 +269,10 @@ QPushButton:pressed {
                                       stop: 0 #dadbde, stop: 1 #f6f7fa);
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
      <string>+</string>
@@ -289,23 +289,23 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(152, 201, 206);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(152, 201, 206);
     border-radius: 12px;
     background-color: rgb(152, 201, 206)
 }
 
 QPushButton:pressed {
     background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+                                      stop: 0 #dadbde, stop: 1 rgb(152, 201, 206));
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
      <string>1</string>
@@ -322,23 +322,23 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(152, 201, 206);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(152, 201, 206);
     border-radius: 12px;
     background-color: rgb(152, 201, 206)
 }
 
 QPushButton:pressed {
     background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+                                      stop: 0 #dadbde, stop: 1 rgb(152, 201, 206));
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
      <string>2</string>
@@ -355,23 +355,23 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(152, 201, 206);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(152, 201, 206);
     border-radius: 12px;
     background-color: rgb(152, 201, 206)
 }
 
 QPushButton:pressed {
     background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+                                      stop: 0 #dadbde, stop: 1 rgb(152, 201, 206));
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
      <string>3</string>
@@ -388,23 +388,23 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(152, 201, 206);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(152, 201, 206);
     border-radius: 12px;
     background-color: rgb(152, 201, 206)
 }
 
 QPushButton:pressed {
     background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+                                      stop: 0 #dadbde, stop: 1 rgb(152, 201, 206));
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
      <string>6</string>
@@ -421,23 +421,23 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(152, 201, 206);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(152, 201, 206);
     border-radius: 12px;
     background-color: rgb(152, 201, 206)
 }
 
 QPushButton:pressed {
     background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+                                      stop: 0 #dadbde, stop: 1 rgb(152, 201, 206));
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
      <string>5</string>
@@ -454,23 +454,23 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(152, 201, 206);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(152, 201, 206);
     border-radius: 12px;
     background-color: rgb(152, 201, 206)
 }
 
 QPushButton:pressed {
     background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+                                      stop: 0 #dadbde, stop: 1 rgb(152, 201, 206));
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
      <string>4</string>
@@ -487,9 +487,12 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(223,223,223);
     border-radius: 12px;
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(223,223,223);
 }
 
 QPushButton:pressed {
@@ -497,16 +500,13 @@ QPushButton:pressed {
                                       stop: 0 #dadbde, stop: 1 #f6f7fa);
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
-     <string>&#8722;</string>
+     <string>−</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_sqrt">
@@ -520,9 +520,12 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(223,223,223);
     border-radius: 12px;
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(223,223,223);
 }
 
 QPushButton:pressed {
@@ -530,16 +533,13 @@ QPushButton:pressed {
                                       stop: 0 #dadbde, stop: 1 #f6f7fa);
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
-     <string>&#8730;</string>
+     <string>√</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_sin">
@@ -553,9 +553,12 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(223,223,223);
     border-radius: 12px;
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(223,223,223);
 }
 
 QPushButton:pressed {
@@ -563,13 +566,10 @@ QPushButton:pressed {
                                       stop: 0 #dadbde, stop: 1 #f6f7fa);
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
      <string>sin</string>
@@ -586,9 +586,12 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(223,223,223);
     border-radius: 12px;
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(223,223,223);
 }
 
 QPushButton:pressed {
@@ -596,13 +599,10 @@ QPushButton:pressed {
                                       stop: 0 #dadbde, stop: 1 #f6f7fa);
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
      <string>e</string>
@@ -619,9 +619,12 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(223,223,223);
     border-radius: 12px;
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(223,223,223);
 }
 
 QPushButton:pressed {
@@ -629,16 +632,13 @@ QPushButton:pressed {
                                       stop: 0 #dadbde, stop: 1 #f6f7fa);
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
-     <string>x&#178;</string>
+     <string>x²</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_mulitplication">
@@ -652,9 +652,12 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(223,223,223);
     border-radius: 12px;
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(223,223,223);
 }
 
 QPushButton:pressed {
@@ -662,16 +665,13 @@ QPushButton:pressed {
                                       stop: 0 #dadbde, stop: 1 #f6f7fa);
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
-     <string>&#215;</string>
+     <string>×</string>
     </property>
     <property name="autoDefault">
      <bool>false</bool>
@@ -691,23 +691,23 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(152, 201, 206);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(152, 201, 206);
     border-radius: 12px;
     background-color: rgb(152, 201, 206)
 }
 
 QPushButton:pressed {
     background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+                                      stop: 0 #dadbde, stop: 1 rgb(152, 201, 206));
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
      <string>7</string>
@@ -724,23 +724,23 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(152, 201, 206);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(152, 201, 206);
     border-radius: 12px;
     background-color: rgb(152, 201, 206)
 }
 
 QPushButton:pressed {
     background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+                                      stop: 0 #dadbde, stop: 1 rgb(152, 201, 206));
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
      <string>8</string>
@@ -757,23 +757,23 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
     border: 2px rgb(152, 201, 206);
     border-radius: 12px;
-    background-color: rgb(152, 201, 206)
+    background-color: rgb(152, 201, 206);
 }
 
 QPushButton:pressed {
     background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+                                      stop: 0 #dadbde, stop: 1 rgb(152, 201, 206));
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
      <string>9</string>
@@ -790,9 +790,12 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(223,223,223);
     border-radius: 12px;
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(223,223,223);
 }
 
 QPushButton:pressed {
@@ -800,16 +803,13 @@ QPushButton:pressed {
                                       stop: 0 #dadbde, stop: 1 #f6f7fa);
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
-     <string>&#960;</string>
+     <string>π</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_power">
@@ -823,9 +823,12 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(223,223,223);
     border-radius: 12px;
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(223,223,223);
 }
 
 QPushButton:pressed {
@@ -833,16 +836,13 @@ QPushButton:pressed {
                                       stop: 0 #dadbde, stop: 1 #f6f7fa);
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
-     <string>x&#8319;</string>
+     <string>xⁿ</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_division">
@@ -856,9 +856,12 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(223,223,223);
     border-radius: 12px;
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(223,223,223);
 }
 
 QPushButton:pressed {
@@ -866,16 +869,13 @@ QPushButton:pressed {
                                       stop: 0 #dadbde, stop: 1 #f6f7fa);
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
-     <string>&#247;</string>
+     <string>÷</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_modulus">
@@ -889,9 +889,12 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+	color:black;
+	font-size:25px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(223,223,223);
     border-radius: 12px;
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(223,223,223);
 }
 
 QPushButton:pressed {
@@ -899,13 +902,10 @@ QPushButton:pressed {
                                       stop: 0 #dadbde, stop: 1 #f6f7fa);
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
      <string>%</string>
@@ -922,9 +922,12 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(223,223,223);
     border-radius: 12px;
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(223,223,223);
 }
 
 QPushButton:pressed {
@@ -932,13 +935,10 @@ QPushButton:pressed {
                                       stop: 0 #dadbde, stop: 1 #f6f7fa);
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
      <string>c</string>
@@ -955,9 +955,12 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+	color:black;
+	font-size:30px;
+	font-family: &quot;Falling Sky Condensed&quot;;
+    border: 2px rgb(223,223,223);
     border-radius: 12px;
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(223,223,223);
 }
 
 QPushButton:pressed {
@@ -965,13 +968,10 @@ QPushButton:pressed {
                                       stop: 0 #dadbde, stop: 1 #f6f7fa);
 }
 
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
+QPushButton:focus {
+	outline: 0;
 }
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
+</string>
     </property>
     <property name="text">
      <string>ac</string>
@@ -997,7 +997,7 @@ QPushButton:default {
      <x>0</x>
      <y>0</y>
      <width>491</width>
-     <height>22</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>
