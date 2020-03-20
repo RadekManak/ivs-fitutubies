@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>491</width>
-    <height>633</height>
+    <height>634</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -47,7 +47,7 @@ QPushButton:default {
      <string>tan</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2_point">
+   <widget class="QPushButton" name="pushButton_point">
     <property name="geometry">
      <rect>
       <x>410</x>
@@ -91,7 +91,7 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+    border: 2px solid rgb(152, 201, 206);
     border-radius: 12px;
     background-color: rgb(152, 201, 206);
 }
@@ -113,7 +113,7 @@ QPushButton:default {
      <string>0</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4_equals">
+   <widget class="QPushButton" name="pushButton_equals">
     <property name="geometry">
      <rect>
       <x>170</x>
@@ -289,7 +289,7 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+    border: 2px solid rgb(152, 201, 206);
     border-radius: 12px;
     background-color: rgb(152, 201, 206)
 }
@@ -322,7 +322,7 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+    border: 2px solid rgb(152, 201, 206);
     border-radius: 12px;
     background-color: rgb(152, 201, 206)
 }
@@ -355,7 +355,7 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+    border: 2px solid rgb(152, 201, 206);
     border-radius: 12px;
     background-color: rgb(152, 201, 206)
 }
@@ -388,7 +388,7 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+    border: 2px solid rgb(152, 201, 206);
     border-radius: 12px;
     background-color: rgb(152, 201, 206)
 }
@@ -421,7 +421,7 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+    border: 2px solid rgb(152, 201, 206);
     border-radius: 12px;
     background-color: rgb(152, 201, 206)
 }
@@ -454,7 +454,7 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+    border: 2px solid rgb(152, 201, 206);
     border-radius: 12px;
     background-color: rgb(152, 201, 206)
 }
@@ -506,7 +506,7 @@ QPushButton:default {
 }</string>
     </property>
     <property name="text">
-     <string>-</string>
+     <string>&#8722;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_sqrt">
@@ -539,7 +539,7 @@ QPushButton:default {
 }</string>
     </property>
     <property name="text">
-     <string>U'221A'</string>
+     <string>&#8730;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_sin">
@@ -638,7 +638,7 @@ QPushButton:default {
 }</string>
     </property>
     <property name="text">
-     <string>x&lt;sup&gt;2&lt;/sup&gt;</string>
+     <string>x&#178;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_mulitplication">
@@ -671,7 +671,7 @@ QPushButton:default {
 }</string>
     </property>
     <property name="text">
-     <string>u8&quot;u327&quot;</string>
+     <string>&#215;</string>
     </property>
     <property name="autoDefault">
      <bool>false</bool>
@@ -691,7 +691,7 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+    border: 2px solid rgb(152, 201, 206);
     border-radius: 12px;
     background-color: rgb(152, 201, 206)
 }
@@ -724,7 +724,7 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+    border: 2px solid rgb(152, 201, 206);
     border-radius: 12px;
     background-color: rgb(152, 201, 206)
 }
@@ -757,7 +757,7 @@ QPushButton:default {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    border: 2px solid rgb(223, 223, 223);
+    border: 2px rgb(152, 201, 206);
     border-radius: 12px;
     background-color: rgb(152, 201, 206)
 }
@@ -809,7 +809,7 @@ QPushButton:default {
 }</string>
     </property>
     <property name="text">
-     <string>e</string>
+     <string>&#960;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_power">
@@ -842,7 +842,7 @@ QPushButton:default {
 }</string>
     </property>
     <property name="text">
-     <string>x&lt;sup&gt;n&lt;/sup&gt;</string>
+     <string>x&#8319;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_division">
@@ -875,7 +875,7 @@ QPushButton:default {
 }</string>
     </property>
     <property name="text">
-     <string>u8&quot;367&quot;</string>
+     <string>&#247;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_modulus">
@@ -987,7 +987,7 @@ QPushButton:default {
      </rect>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string/>
     </property>
    </widget>
   </widget>
