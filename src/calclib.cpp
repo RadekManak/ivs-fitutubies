@@ -3,7 +3,7 @@
 #include "calclib/calclib.hpp"
 
 double calcLib::add(double lhs, double rhs) {
-    return lhs - rhs;
+    return lhs + rhs;
 }
 
 double calcLib::sub(double lhs, double rhs) {
