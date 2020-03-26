@@ -20,9 +20,10 @@ public:
     static double tan(double n);
     static double pow(double base, int exponent);
     static double factorial(double n);
-    static double solveEquation(const std::string &expression);
+    static std::string solveEquation(const std::string &expression);
 
 protected:
     static int parseEquation(const std::string &expression, std::vector<lexertk::generator::token_t> &outTokens);
     static void solveOperation(std::vector<Token> &tokens, Token_type operation);
+    static double solve_binary_operation(double lhs, double rhs, Token_type operation);
 };

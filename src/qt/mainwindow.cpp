@@ -46,5 +46,5 @@ void MainWindow::clear() {
 }
 
 void MainWindow::calculate() {
-    ui->label->setText(QString::number(calcLib::solveEquation(ui->label->text().toStdString())));
+    ui->label->setText(QString::fromStdString(calcLib::solveEquation(ui->label->text().toStdString())));
 }

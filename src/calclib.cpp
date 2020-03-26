@@ -1,4 +1,5 @@
 #include <vector>
+#include <stdexcept>
 #include "calclib/calclib.hpp"
 
 double calcLib::add(double lhs, double rhs) {
@@ -45,7 +46,7 @@ int calcLib::parseEquation(const std::string &expression, std::vector<lexertk::g
     return 0;
 }
 
-double solve_binary_operation(double lhs, double rhs, Token_type operation){
+double calcLib::solve_binary_operation(double lhs, double rhs, Token_type operation){
     switch(operation){
         case Token_type::e_add:
             return calcLib::add(lhs, rhs);
@@ -69,16 +70,23 @@ void calcLib::solveOperation(std::vector<Token> &tokens, Token_type operation){
             previous->value = std::to_string(solve_binary_operation(std::stod(previous->value), std::stod(next->value), operation));
             tokens.erase(token);
             tokens.erase(token);
+        } else {
+            throw std::invalid_argument("Non number tokens around operators");
         }
     }
 }
 
-double calcLib::solveEquation(const std::string &expression) {
-    std::vector<Token> tokens;
-    parseEquation(expression, tokens);
-    solveOperation(tokens, Token_type::e_mul);
-    solveOperation(tokens, Token_type::e_div);
-    solveOperation(tokens, Token_type::e_add);
-    solveOperation(tokens, Token_type::e_sub);
-    return std::stod(tokens[0].value);
+std::string calcLib::solveEquation(const std::string &expression) {
+    try {
+        std::vector<Token> tokens;
+        parseEquation(expression, tokens);
+        solveOperation(tokens, Token_type::e_mul);
+        solveOperation(tokens, Token_type::e_div);
+        solveOperation(tokens, Token_type::e_add);
+        solveOperation(tokens, Token_type::e_sub);
+        return tokens[0].value;
+    } catch(std::invalid_argument &err) {
+        return "Err";
+    }
+
 }
