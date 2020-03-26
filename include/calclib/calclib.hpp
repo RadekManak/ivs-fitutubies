@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <lib/lexertk/lexertk.hpp>
+#include <vector>
 
 using Token = lexertk::generator::token_t;
 using Token_type = Token::token_type;
