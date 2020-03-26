@@ -11,6 +11,7 @@ set(CMAKE_AUTOUIC ON)
 
 add_library(calclib STATIC src/calclib.cpp include/calclib/calclib.hpp)
 target_include_directories(calclib PUBLIC include)
+target_include_directories(calclib PRIVATE lib/lexertk)
 
 add_executable(fcalc
         src/calc.cpp
