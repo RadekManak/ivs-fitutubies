@@ -1,8 +1,20 @@
 #include <vector>
 #include "calclib/calclib.hpp"
 
-double calcLib::add(double a, double b) {
-    return a + b;
+double calcLib::add(double lhs, double rhs) {
+    return lhs - rhs;
+}
+
+double calcLib::sub(double lhs, double rhs) {
+    return lhs - rhs;
+}
+
+double calcLib::mul(double lhs, double rhs) {
+    return lhs * rhs;
+}
+
+double calcLib::div(double lhs, double rhs) {
+    return lhs / rhs;
 }
 
 int calcLib::parseEquation(const std::string &expression, std::vector<lexertk::generator::token_t> &outTokens){
@@ -33,20 +45,40 @@ int calcLib::parseEquation(const std::string &expression, std::vector<lexertk::g
     return 0;
 }
 
-double calcLib::solveEquation(const std::string &expression) {
-    std::vector<Token> tokens;
-    calcLib::parseEquation(expression, tokens);
+double solve_binary_operation(double lhs, double rhs, Token_type operation){
+    switch(operation){
+        case Token_type::e_add:
+            return calcLib::add(lhs, rhs);
+        case Token_type::e_sub:
+            return calcLib::sub(lhs, rhs);
+        case Token_type::e_mul:
+            return calcLib::mul(lhs, rhs);
+        case Token_type::e_div:
+            return calcLib::div(lhs, rhs);
+    }
+}
+
+void calcLib::solveOperation(std::vector<Token> &tokens, Token_type operation){
     while(true){
-        auto token = std::find_if(tokens.begin(), tokens.end(), [&](const Token &token){return token.type == Token_type::e_add;});
+        auto token = std::find_if(tokens.begin(), tokens.end(), [&](const Token &token){return token.type == operation;});
         if (token == tokens.end()){break;}
 
         auto previous = token-1;
         auto next = token+1;
         if (previous->type == Token_type::e_number && next->type == Token_type::e_number){
-            previous->value = std::to_string(std::stod(previous->value) + std::stod(next->value));
+            previous->value = std::to_string(solve_binary_operation(std::stod(previous->value), std::stod(next->value), operation));
             tokens.erase(token);
             tokens.erase(token);
         }
     }
+}
+
+double calcLib::solveEquation(const std::string &expression) {
+    std::vector<Token> tokens;
+    parseEquation(expression, tokens);
+    solveOperation(tokens, Token_type::e_mul);
+    solveOperation(tokens, Token_type::e_div);
+    solveOperation(tokens, Token_type::e_add);
+    solveOperation(tokens, Token_type::e_sub);
     return std::stod(tokens[0].value);
 }

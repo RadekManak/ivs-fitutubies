@@ -24,5 +24,5 @@ public:
 
 protected:
     static int parseEquation(const std::string &expression, std::vector<lexertk::generator::token_t> &outTokens);
-
+    static void solveOperation(std::vector<Token> &tokens, Token_type operation);
 };
