@@ -13,6 +13,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    bool new_expression = true;
 
 private:
     Ui::MainWindow *ui;

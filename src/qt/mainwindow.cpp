@@ -34,8 +34,9 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::number_pressed(const QString &value) {
-    if (ui->label->text() == "0"){
+    if (new_expression){ // Clear result
         ui->label->setText(value);
+        new_expression = false;
         return;
     }
     ui->label->setText(ui->label->text() + value);
@@ -43,8 +44,10 @@ void MainWindow::number_pressed(const QString &value) {
 
 void MainWindow::clear() {
     ui->label->setText("0");
+    new_expression = true;
 }
 
 void MainWindow::calculate() {
     ui->label->setText(QString::fromStdString(calcLib::solveEquation(ui->label->text().toStdString())));
+    new_expression = true;
 }
