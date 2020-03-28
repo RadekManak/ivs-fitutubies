@@ -18,7 +18,7 @@ double calcLib::div(double lhs, double rhs) {
     return lhs / rhs;
 }
 
-int calcLib::parseEquation(const std::string &expression, std::vector<lexertk::generator::token_t> &outTokens){
+int calcLib::parseEquation(const std::string &expression, std::vector<Token> &outTokens){
     lexertk::generator generator;
 
     if (!generator.process(expression))
@@ -40,7 +40,7 @@ int calcLib::parseEquation(const std::string &expression, std::vector<lexertk::g
     ci.process(generator);
 
     while(!generator.finished()){
-        outTokens.emplace_back(generator.next_token());
+        outTokens.emplace_back(Token::from_lexertk(generator.next_token()));
     }
 
     return 0;
@@ -67,7 +67,7 @@ void calcLib::solveOperation(std::vector<Token> &tokens, Token_type operation){
         auto previous = token-1;
         auto next = token+1;
         if (previous->type == Token_type::e_number && next->type == Token_type::e_number){
-            previous->value = std::to_string(solve_binary_operation(std::stod(previous->value), std::stod(next->value), operation));
+            previous->value = solve_binary_operation(std::get<double>(previous->value), std::get<double>(next->value), operation);
             tokens.erase(token);
             tokens.erase(token);
         } else {
@@ -84,9 +84,20 @@ std::string calcLib::solveEquation(const std::string &expression) {
         solveOperation(tokens, Token_type::e_div);
         solveOperation(tokens, Token_type::e_add);
         solveOperation(tokens, Token_type::e_sub);
-        return tokens[0].value;
+        return std::to_string(std::get<double>(tokens[0].value));
     } catch(std::invalid_argument &err) {
         return "Err";
     }
 
+}
+
+Token Token::from_lexertk(const lexertk::token& lexertk_token) {
+    Token token;
+    token.type = lexertk_token.type;
+    if (lexertk_token.type == Token_type::e_number){
+        token.value = std::stod(lexertk_token.value);
+    } else {
+        token.value = lexertk_token.value;
+    }
+    return token;
 }
