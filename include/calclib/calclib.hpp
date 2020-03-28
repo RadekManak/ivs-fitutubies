@@ -35,5 +35,7 @@ public:
 protected:
     static int parseEquation(const std::string &expression, std::vector<Token> &outTokens);
     static void solveOperation(std::vector<Token> &tokens, Token_type operation);
+    static void solveUnaryPlusMinus(std::vector<Token> &tokens);
     static double solve_binary_operation(double lhs, double rhs, Token_type operation);
+    static double solve_unary_operation(double num, Token_type operation);
 };
