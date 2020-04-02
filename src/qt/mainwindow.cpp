@@ -58,9 +58,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //square
     connect(ui->pushButton_square, &QPushButton::clicked, this, [=](){number_pressed("²");});
-
+      
     //exponent
     connect(ui->pushButton_power, &QPushButton::clicked, this, [=](){number_pressed("^");});
+
 }
 
 MainWindow::~MainWindow()
