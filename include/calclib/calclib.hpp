@@ -14,28 +14,27 @@ class Token{
 public:
     Token_type type;
     std::variant<double,std::string> value;
-    static Token from_lexertk(const lexertk::token&);
+    static Token fromLexertk(const lexertk::token &lexertk_token);
+    inline bool operator==(const Token& rhs) const;
 };
 
-class calcLib {
+namespace calcLib {
+    double add(double lhs, double rhs);
+    double sub(double lhs, double rhs);
+    double mul(double lhs, double rhs);
+    double div(double lhs, double rhs);
+    double mod(double lhs, double rhs);
+    double sin(double n);
+    double cos(double n);
+    double tan(double n);
+    double pow(double base, int exponent);
+    double factorial(double n);
+    std::string solveEquation(const std::string &expression);
 
-public:
-    static double add(double lhs, double rhs);
-    static double sub(double lhs, double rhs);
-    static double mul(double lhs, double rhs);
-    static double div(double lhs, double rhs);
-    static double mod(double lhs, double rhs);
-    static double sin(double n);
-    static double cos(double n);
-    static double tan(double n);
-    static double pow(double base, int exponent);
-    static double factorial(double n);
-    static std::string solveEquation(const std::string &expression);
-
-protected:
-    static int parseEquation(const std::string &expression, std::vector<Token> &outTokens);
-    static void solveOperation(std::vector<Token> &tokens, Token_type operation);
-    static void solveUnaryPlusMinus(std::vector<Token> &tokens);
-    static double solve_binary_operation(double lhs, double rhs, Token_type operation);
-    static double solve_unary_operation(double num, Token_type operation);
-};
+    int parseEquation(const std::string &expression, std::vector<Token> &outTokens);
+    double calculateBinaryOperation(double lhs, double rhs, const Token& operation);
+    double calculateUnaryOperation(double num, const Token& operation);
+    void solveBinaryOperation(std::vector<Token> &tokens, const Token& operation);
+    void solveUnaryPlusMinus(std::vector<Token> &tokens);
+    void solveRightAssociativeUnary(std::vector<Token> &vector, const Token &operation);
+}
