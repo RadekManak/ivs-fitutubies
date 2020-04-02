@@ -36,6 +36,13 @@ double calcLib::div(double lhs, double rhs) {
     return lhs / rhs;
 }
 
+double calcLib::mod(double lhs, double rhs) {
+    double div = lhs/rhs;
+    double intpart;
+    modf(div, &intpart);
+    return (div-intpart) * rhs;
+}
+
 double calcLib::pow(double base, double exponent) {
     return std::pow(base, exponent);
 }
@@ -94,6 +101,10 @@ double calcLib::calculateBinaryOperation(double lhs, double rhs, const Token& op
             return calcLib::div(lhs, rhs);
         case Token_type::e_pow:
             return calcLib::pow(lhs, rhs);
+        default:
+            if (std::get<std::string>(operation.value) == "%"){
+                return mod(lhs,rhs);
+            }
     }
     throw std::invalid_argument(std::string("Invalid operation: " + std::get<std::string>(operation.value)));
 }
@@ -156,6 +167,7 @@ std::string calcLib::solveEquation(const std::string &expression) {
         parseEquation(expression, tokens);
         solveUnaryPlusMinus(tokens);
         solveRightAssociativeUnary(tokens, Token{Token_type::e_none, "!"});
+        solveBinaryOperation(tokens, Token{Token_type::e_none, "%"}, false);
         solveBinaryOperation(tokens, Token{Token_type::e_pow, "^"}, true);
         solveBinaryOperation(tokens, Token{Token_type::e_mul, "*"}, false);
         solveBinaryOperation(tokens, Token{Token_type::e_div, "/"}, false);
