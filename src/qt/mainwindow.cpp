@@ -47,8 +47,13 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_factorial, &QPushButton::clicked, this, [=](){number_pressed("!");});
 
     //decimal point
-    connect(ui->pushButton_point, &QPushButton::clicked, this, [=](){number_pressed(",");});
-
+    //connect(ui->pushButton_point, &QPushButton::clicked, this, [=](){number_pressed(",");});
+    
+    auto action = new QAction(this);
+    action->setShortcuts({ tr(","), tr(".") });
+    this->addAction(action);
+    connect(action, &QAction::triggered, [=](){ ui->pushButton_point->animateClick(); number_pressed(",");});
+    
     //square root
     connect(ui->pushButton_sqrt, &QPushButton::clicked, this, [=](){number_pressed("√");});
 
