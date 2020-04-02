@@ -1,6 +1,24 @@
 #include <vector>
 #include <stdexcept>
+#include <cmath>
 #include "calclib/calclib.hpp"
+
+using namespace std::string_literals;
+
+bool Token::operator==(const Token &rhs) const {
+    return (this->type == rhs.type || rhs.type == Token_type::e_none) && this->value == rhs.value;
+}
+
+Token Token::fromLexertk(const lexertk::token& lexertk_token) {
+    Token token;
+    token.type = lexertk_token.type;
+    if (lexertk_token.type == Token_type::e_number){
+        token.value = std::stod(lexertk_token.value);
+    } else {
+        token.value = lexertk_token.value;
+    }
+    return token;
+}
 
 double calcLib::add(double lhs, double rhs) {
     return lhs + rhs;
@@ -16,6 +34,20 @@ double calcLib::mul(double lhs, double rhs) {
 
 double calcLib::div(double lhs, double rhs) {
     return lhs / rhs;
+}
+
+double calcLib::factorial(double n) {
+    double intpart;
+    if (n < 0 || modf(n, &intpart) != 0.0){
+        return NAN;
+    }
+    if (n > 100){
+        return INFINITY;
+    }
+    if (n <= 1){
+        return 1;
+    }
+    return n * factorial(n-1);
 }
 
 int calcLib::parseEquation(const std::string &expression, std::vector<Token> &outTokens){
@@ -40,14 +72,14 @@ int calcLib::parseEquation(const std::string &expression, std::vector<Token> &ou
     ci.process(generator);
 
     while(!generator.finished()){
-        outTokens.emplace_back(Token::from_lexertk(generator.next_token()));
+        outTokens.emplace_back(Token::fromLexertk(generator.next_token()));
     }
 
     return 0;
 }
 
-double calcLib::solve_binary_operation(double lhs, double rhs, Token_type operation){
-    switch(operation){
+double calcLib::calculateBinaryOperation(double lhs, double rhs, const Token& operation){
+    switch(operation.type){
         case Token_type::e_add:
             return calcLib::add(lhs, rhs);
         case Token_type::e_sub:
@@ -57,26 +89,33 @@ double calcLib::solve_binary_operation(double lhs, double rhs, Token_type operat
         case Token_type::e_div:
             return calcLib::div(lhs, rhs);
     }
+    throw std::invalid_argument(std::string("Invalid operation: " + std::get<std::string>(operation.value)));
 }
 
-double calcLib::solve_unary_operation(double num, Token_type operation){
-    switch(operation){
+double calcLib::calculateUnaryOperation(double num, const Token& operation){
+    switch(operation.type){
         case Token_type::e_add:
             return num;
         case Token_type::e_sub:
             return -num;
+        default:
+            if (std::get<std::string>(operation.value) == "!"){
+                return factorial(num);
+            }
     }
+    throw std::invalid_argument(std::string("Invalid operation: " + std::get<std::string>(operation.value)));
 }
 
-void calcLib::solveOperation(std::vector<Token> &tokens, Token_type operation){
+void calcLib::solveBinaryOperation(std::vector<Token> &tokens, const Token& operation){
     while(true){
-        auto token = std::find_if(tokens.begin(), tokens.end(), [&](const Token &token){return token.type == operation;});
+        auto token = std::find_if(tokens.begin(), tokens.end(), [&](const Token &token){return token == operation;});
         if (token == tokens.end()){break;}
 
         auto previous = token-1;
         auto next = token+1;
         if (previous->type == Token_type::e_number && next->type == Token_type::e_number){
-            previous->value = solve_binary_operation(std::get<double>(previous->value), std::get<double>(next->value), operation);
+            previous->value = calculateBinaryOperation(std::get<double>(previous->value),
+                                                       std::get<double>(next->value), operation);
             tokens.erase(token);
             tokens.erase(token);
         } else {
@@ -91,7 +130,7 @@ void calcLib::solveUnaryPlusMinus(std::vector<Token> &tokens){
             auto previous = token-1;
             auto next = token+1;
             if (previous->type != Token_type::e_number && next->type == Token_type::e_number){
-                next->value = solve_unary_operation(std::get<double>(next->value), token->type);
+                next->value = calculateUnaryOperation(std::get<double>(next->value), *token);
                 tokens.erase(token);
             }
         }
@@ -103,10 +142,14 @@ std::string calcLib::solveEquation(const std::string &expression) {
         std::vector<Token> tokens;
         parseEquation(expression, tokens);
         solveUnaryPlusMinus(tokens);
-        solveOperation(tokens, Token_type::e_mul);
-        solveOperation(tokens, Token_type::e_div);
-        solveOperation(tokens, Token_type::e_add);
-        solveOperation(tokens, Token_type::e_sub);
+        solveRightAssociativeUnary(tokens, Token{Token_type::e_none, "!"});
+        solveBinaryOperation(tokens, Token{Token_type::e_mul, "*"});
+        solveBinaryOperation(tokens, Token{Token_type::e_div, "/"});
+        solveBinaryOperation(tokens, Token{Token_type::e_add, "+"});
+        solveBinaryOperation(tokens, Token{Token_type::e_sub, "-"});
+        if (tokens[0].type != Token_type::e_number){
+            return "Err";
+        }
         return std::to_string(std::get<double>(tokens[0].value));
     } catch(std::invalid_argument &err) {
         return "Err";
@@ -114,13 +157,14 @@ std::string calcLib::solveEquation(const std::string &expression) {
 
 }
 
-Token Token::from_lexertk(const lexertk::token& lexertk_token) {
-    Token token;
-    token.type = lexertk_token.type;
-    if (lexertk_token.type == Token_type::e_number){
-        token.value = std::stod(lexertk_token.value);
-    } else {
-        token.value = lexertk_token.value;
+void calcLib::solveRightAssociativeUnary(std::vector<Token>& tokens, const Token& operation) {
+    while(true){
+        auto token = std::find_if(tokens.begin(), tokens.end(), [&](const Token &token){return token == operation;});
+        if (token == tokens.end() || token == tokens.begin()){break;}
+        auto previous = token-1;
+        if (previous->type == Token_type::e_number){
+            previous->value = calculateUnaryOperation(std::get<double>(previous->value), *token);
+            tokens.erase(token);
+        }
     }
-    return token;
 }
