@@ -19,7 +19,7 @@ private:
     Ui::MainWindow *ui;
 
 public slots:
-    void number_pressed(const QString &value);
+    void display_symbol(const QString &value);
     void clear();
     void calculate();
 };
