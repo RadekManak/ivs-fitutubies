@@ -115,9 +115,6 @@ QPushButton:focus {
     <property name="text">
      <string>,</string>
     </property>
-    <property name="shortcut">
-     <string>,</string>
-    </property>
    </widget>
    <widget class="QPushButton" name="pushButton_0">
     <property name="geometry">
@@ -1079,8 +1076,17 @@ QPushButton:focus {
       <height>141</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>DejaVu Sans</family>
+      <pointsize>32</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
   </widget>
