@@ -27,14 +27,14 @@ namespace calcLib {
     double sin(double n);
     double cos(double n);
     double tan(double n);
-    double pow(double base, int exponent);
+    double pow(double base, double exponent);
     double factorial(double n);
     std::string solveEquation(const std::string &expression);
 
     int parseEquation(const std::string &expression, std::vector<Token> &outTokens);
     double calculateBinaryOperation(double lhs, double rhs, const Token& operation);
     double calculateUnaryOperation(double num, const Token& operation);
-    void solveBinaryOperation(std::vector<Token> &tokens, const Token& operation);
+    void solveBinaryOperation(std::vector<Token> &tokens, const Token& operation, bool reverse);
     void solveUnaryPlusMinus(std::vector<Token> &tokens);
     void solveRightAssociativeUnary(std::vector<Token> &vector, const Token &operation);
 }

@@ -36,6 +36,10 @@ double calcLib::div(double lhs, double rhs) {
     return lhs / rhs;
 }
 
+double calcLib::pow(double base, double exponent) {
+    return std::pow(base, exponent);
+}
+
 double calcLib::factorial(double n) {
     double intpart;
     if (n < 0 || modf(n, &intpart) != 0.0){
@@ -88,6 +92,8 @@ double calcLib::calculateBinaryOperation(double lhs, double rhs, const Token& op
             return calcLib::mul(lhs, rhs);
         case Token_type::e_div:
             return calcLib::div(lhs, rhs);
+        case Token_type::e_pow:
+            return calcLib::pow(lhs, rhs);
     }
     throw std::invalid_argument(std::string("Invalid operation: " + std::get<std::string>(operation.value)));
 }
@@ -106,10 +112,17 @@ double calcLib::calculateUnaryOperation(double num, const Token& operation){
     throw std::invalid_argument(std::string("Invalid operation: " + std::get<std::string>(operation.value)));
 }
 
-void calcLib::solveBinaryOperation(std::vector<Token> &tokens, const Token& operation){
+void calcLib::solveBinaryOperation(std::vector<Token> &tokens, const Token& operation, bool reverse){
     while(true){
-        auto token = std::find_if(tokens.begin(), tokens.end(), [&](const Token &token){return token == operation;});
-        if (token == tokens.end()){break;}
+        std::vector<Token>::iterator token;
+        if (reverse){
+            auto reverse_token = std::find_if(tokens.rbegin(), tokens.rend(), [&](const Token &token){return token == operation;});
+            if (reverse_token == tokens.rend()){break;}
+            token = reverse_token.base()-1; //Get as forward iterator
+        } else {
+            token = std::find_if(tokens.begin(), tokens.end(), [&](const Token &token){return token == operation;});
+            if (token == tokens.end()){break;}
+        }
 
         auto previous = token-1;
         auto next = token+1;
@@ -143,10 +156,11 @@ std::string calcLib::solveEquation(const std::string &expression) {
         parseEquation(expression, tokens);
         solveUnaryPlusMinus(tokens);
         solveRightAssociativeUnary(tokens, Token{Token_type::e_none, "!"});
-        solveBinaryOperation(tokens, Token{Token_type::e_mul, "*"});
-        solveBinaryOperation(tokens, Token{Token_type::e_div, "/"});
-        solveBinaryOperation(tokens, Token{Token_type::e_add, "+"});
-        solveBinaryOperation(tokens, Token{Token_type::e_sub, "-"});
+        solveBinaryOperation(tokens, Token{Token_type::e_pow, "^"}, true);
+        solveBinaryOperation(tokens, Token{Token_type::e_mul, "*"}, false);
+        solveBinaryOperation(tokens, Token{Token_type::e_div, "/"}, false);
+        solveBinaryOperation(tokens, Token{Token_type::e_add, "+"},false);
+        solveBinaryOperation(tokens, Token{Token_type::e_sub, "-"},false);
         if (tokens[0].type != Token_type::e_number){
             return "Err";
         }
