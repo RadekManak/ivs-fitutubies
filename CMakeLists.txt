@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
 project(fcalc LANGUAGES CXX)
 
+include(GoogleTest.cmake)
+
 # Find includes in corresponding build directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # Instruct CMake to run moc automatically when needed
@@ -19,7 +21,14 @@ add_executable(fcalc
         src/qt/mainwindow.h
         src/qt/mainwindow.ui
         )
+add_executable(test_lib
+	src/test/calclib_test.cpp
+)
+target_link_libraries(test_lib PUBLIC calclib)
+target_link_libraries(test_lib PUBLIC gtest_main)
 target_link_libraries(fcalc PUBLIC calclib)
+
+GTEST_ADD_TESTS(test_lib "" src/test/calclib_test.cpp)
 
 find_package(Qt5Widgets CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Widgets)
