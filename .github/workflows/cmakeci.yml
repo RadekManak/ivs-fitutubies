@@ -21,7 +21,7 @@ jobs:
       run: sudo apt-get install qtbase5-dev
       
     - name: Install GoogleTest
-      run: sudo apt-get install libgtest-dev
+      run: sudo apt-get install libgtest-dev && cd /usr/src/gtest && sudo cmake . && sudo make install
       
     - name: Configure CMake
       # Use a bash shell so we can use the same syntax for environment variable
