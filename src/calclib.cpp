@@ -36,6 +36,18 @@ double calcLib::div(double lhs, double rhs) {
     return lhs / rhs;
 }
 
+double calcLib::sin(double n) {
+    return std::sin(n);
+}
+
+double calcLib::cos(double n) {
+    return std::cos(n);
+}
+
+double calcLib::tan(double n) {
+    return std::tan(n);
+}
+
 double calcLib::mod(double lhs, double rhs) {
     double div = lhs/rhs;
     double intpart;
@@ -164,8 +176,13 @@ void calcLib::solveUnaryPlusMinus(std::vector<Token> &tokens){
 std::string calcLib::solveEquation(const std::string &expression) {
     try {
         std::vector<Token> tokens;
-        parseEquation(expression, tokens);
+        int result = parseEquation(expression, tokens);
+        if (result == 1){
+            return "Syntax error";
+        }
         solveUnaryPlusMinus(tokens);
+        solveFunctions(tokens);
+        solveUnaryPlusMinus(tokens); // To solve 2*-sin(-2) we need to run twice.
         solveRightAssociativeUnary(tokens, Token{Token_type::e_none, "!"});
         solveBinaryOperation(tokens, Token{Token_type::e_none, "%"}, false);
         solveBinaryOperation(tokens, Token{Token_type::e_pow, "^"}, true);
@@ -180,7 +197,6 @@ std::string calcLib::solveEquation(const std::string &expression) {
     } catch(std::invalid_argument &err) {
         return "Err";
     }
-
 }
 
 void calcLib::solveRightAssociativeUnary(std::vector<Token>& tokens, const Token& operation) {
@@ -191,6 +207,37 @@ void calcLib::solveRightAssociativeUnary(std::vector<Token>& tokens, const Token
         if (previous->type == Token_type::e_number){
             previous->value = calculateUnaryOperation(std::get<double>(previous->value), *token);
             tokens.erase(token);
+        }
+    }
+}
+
+double calcLib::calculateFunction(double num, const Token& function) {
+    if(std::get<std::string>(function.value) == "sin") {
+        return calcLib::sin(num);
+    } else if(std::get<std::string>(function.value) == "cos") {
+        return calcLib::cos(num);
+    } else if(std::get<std::string>(function.value) == "tan") {
+        return calcLib::tan(num);
+    } else {
+        throw std::invalid_argument("Invalid function");
+    }
+}
+
+void calcLib::solveFunctions(std::vector<Token>& tokens){
+    for(auto token = tokens.begin()+1; token != tokens.end(); token++) {
+        auto previous = token - 1;
+        if (previous->type == Token_type::e_symbol && token->type == Token_type::e_lbracket){
+            auto next = token+1;
+            auto rbrace = next+1;
+            if (next->type == Token_type::e_number && rbrace->type == Token_type::e_rbracket){
+                *previous = Token{Token_type::e_number, calculateFunction(std::get<double>(next->value), *previous)};
+                tokens.erase(token);
+                tokens.erase(token);
+                tokens.erase(token);
+                token = tokens.begin();
+            } else {
+                throw std::invalid_argument("Function end not found");
+            }
         }
     }
 }

@@ -34,7 +34,9 @@ namespace calcLib {
     int parseEquation(const std::string &expression, std::vector<Token> &outTokens);
     double calculateBinaryOperation(double lhs, double rhs, const Token& operation);
     double calculateUnaryOperation(double num, const Token& operation);
+    double calculateFunction(double num, const Token& function);
     void solveBinaryOperation(std::vector<Token> &tokens, const Token& operation, bool reverse);
     void solveUnaryPlusMinus(std::vector<Token> &tokens);
     void solveRightAssociativeUnary(std::vector<Token> &vector, const Token &operation);
+    void solveFunctions(std::vector<Token> &tokens);
 }
