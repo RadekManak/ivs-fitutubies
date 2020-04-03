@@ -40,3 +40,10 @@ jobs:
       working-directory: ${{runner.workspace}}/build
       shell: bash
       run: ctest -C $BUILD_TYPE
+    
+    - name: Install GoogleTest
+      run: apt-get install libgtest-dev
+
+    - name: Run GoogleTest
+      working-directory: ${{runner.workspace}}/build
+      run: ./calclib_test
