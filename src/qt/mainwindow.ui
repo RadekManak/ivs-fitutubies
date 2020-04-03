@@ -185,7 +185,7 @@ QPushButton:focus {
      <string>=</string>
     </property>
     <property name="shortcut">
-     <string>Return</string>
+     <string>=</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_factorial">
