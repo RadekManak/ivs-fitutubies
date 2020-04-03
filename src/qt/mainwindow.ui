@@ -1067,19 +1067,19 @@ QPushButton:focus {
      <string>Del</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="outputLabel">
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>20</y>
       <width>451</width>
-      <height>141</height>
+      <height>121</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>DejaVu Sans</family>
-      <pointsize>32</pointsize>
+      <pointsize>16</pointsize>
      </font>
     </property>
     <property name="text">
@@ -1089,6 +1089,16 @@ QPushButton:focus {
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
+   <widget class="QLineEdit" name="inputLine">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>150</y>
+      <width>471</width>
+      <height>36</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -1096,7 +1106,7 @@ QPushButton:focus {
      <x>0</x>
      <y>0</y>
      <width>491</width>
-     <height>25</height>
+     <height>27</height>
     </rect>
    </property>
   </widget>

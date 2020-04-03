@@ -8,7 +8,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->label->setText("0");
 
     //action buttons
     connect(ui->pushButton_c, &QPushButton::clicked, this, &MainWindow::clear);
@@ -75,21 +74,21 @@ MainWindow::~MainWindow()
 
 void MainWindow::number_pressed(const QString &value) {
     if (new_expression){ // Clear result
-        ui->label->setText(value);
+        ui->inputLine->setText(value);
         new_expression = false;
         return;
     }
-    ui->label->setText(ui->label->text() + value);
+    ui->inputLine->setText(ui->inputLine->text() + value);
 }
 
 
 
 void MainWindow::clear() {
-    ui->label->setText("0");
+    ui->inputLine->setText("0");
     new_expression = true;
 }
 
 void MainWindow::calculate() {
-    ui->label->setText(QString::fromStdString(calcLib::solveEquation(ui->label->text().toStdString())));
+    ui->outputLabel->setText(QString::fromStdString(calcLib::solveEquation(ui->inputLine->text().toStdString())));
     new_expression = true;
 }
