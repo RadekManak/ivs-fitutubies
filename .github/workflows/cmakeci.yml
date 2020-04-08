@@ -19,10 +19,7 @@ jobs:
     
     - name: Install Qt5-base package
       run: sudo apt-get install qtbase5-dev
-      
-    - name: Install GoogleTest
-      run: sudo apt-get install libgtest-dev && cd /usr/src/gtest && sudo cmake . && sudo make install
-      
+
     - name: Configure CMake
       # Use a bash shell so we can use the same syntax for environment variable
       # access regardless of the host operating system
@@ -38,11 +35,6 @@ jobs:
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
       run: cmake --build . --config $BUILD_TYPE
-
-    - name: Test
-      working-directory: ${{runner.workspace}}/build
-      shell: bash
-      run: ctest -C $BUILD_TYPE
 
     - name: Run GoogleTest
       working-directory: ${{runner.workspace}}/build
