@@ -173,6 +173,19 @@ void calcLib::solveUnaryPlusMinus(std::vector<Token> &tokens){
     }
 }
 
+static std::map<std::string, double> constants{
+        {"pi", M_PI},
+        {"e", M_E}
+};
+
+void calcLib::solveConstants(std::vector<Token> &tokens, const Token& constant){
+    for(auto token = tokens.begin(); token != tokens.end(); token++) {
+        if (*token == constant){
+            *token = Token{Token_type::e_number, constants[std::get<std::string>(token->value)]};
+        }
+    }
+}
+
 std::string calcLib::solveEquation(const std::string &expression) {
     try {
         std::vector<Token> tokens;
@@ -180,6 +193,8 @@ std::string calcLib::solveEquation(const std::string &expression) {
         if (result == 1){
             return "Syntax error";
         }
+        solveConstants(tokens, Token{Token_type::e_symbol, "e"});
+        solveConstants(tokens, Token{Token_type::e_symbol, "pi"});
         solveUnaryPlusMinus(tokens);
         solveFunctions(tokens);
         solveUnaryPlusMinus(tokens); // To solve 2*-sin(-2) we need to run twice.

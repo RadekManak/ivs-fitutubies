@@ -39,4 +39,5 @@ namespace calcLib {
     void solveUnaryPlusMinus(std::vector<Token> &tokens);
     void solveRightAssociativeUnary(std::vector<Token> &vector, const Token &operation);
     void solveFunctions(std::vector<Token> &tokens);
+    void solveConstants(std::vector<Token> &tokens, const Token &constant);
 }
