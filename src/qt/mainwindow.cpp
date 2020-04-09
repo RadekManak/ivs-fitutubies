@@ -11,7 +11,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //action buttons
     connect(ui->pushButton_c, &QPushButton::clicked, this, &MainWindow::clear);
-    connect(ui->pushButton_ac, &QPushButton::clicked, this, &MainWindow::clear);
     connect(ui->pushButton_equals, &QPushButton::clicked, this, &MainWindow::calculate);
 
     //numbers displayed
@@ -26,18 +25,17 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_8, &QPushButton::clicked, this, [=](){number_pressed("8");});
     connect(ui->pushButton_9, &QPushButton::clicked, this, [=](){number_pressed("9");});
 
-
     //arithmetic symbols
     connect(ui->pushButton_addition, &QPushButton::clicked, this, [=](){number_pressed("+");});
     connect(ui->pushButton_subtraction, &QPushButton::clicked, this, [=](){number_pressed("-");});
     connect(ui->pushButton_mulitplication, &QPushButton::clicked, this, [=](){number_pressed("*");});
     connect(ui->pushButton_division, &QPushButton::clicked, this, [=](){number_pressed("/");});
-    connect(ui->pushButton_log, &QPushButton::clicked, this, [=](){number_pressed("log");});
+    connect(ui->pushButton_log, &QPushButton::clicked, this, [=](){number_pressed("log(");});
 
     //goniometric funcions
-    connect(ui->pushButton_cos, &QPushButton::clicked, this, [=](){number_pressed("cos");});
-    connect(ui->pushButton_sin, &QPushButton::clicked, this, [=](){number_pressed("sin");});
-    connect(ui->pushButton_tan, &QPushButton::clicked, this, [=](){number_pressed("tan");});
+    connect(ui->pushButton_cos, &QPushButton::clicked, this, [=](){number_pressed("cos(");});
+    connect(ui->pushButton_sin, &QPushButton::clicked, this, [=](){number_pressed("sin(");});
+    connect(ui->pushButton_tan, &QPushButton::clicked, this, [=](){number_pressed("tan(");});
 
     //modulus
     connect(ui->pushButton_modulus, &QPushButton::clicked, this, [=](){number_pressed("%");});
@@ -46,22 +44,25 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_factorial, &QPushButton::clicked, this, [=](){number_pressed("!");});
 
     //decimal point
-    //connect(ui->pushButton_point, &QPushButton::clicked, this, [=](){number_pressed(",");});
-    
+    connect(ui->pushButton_point, &QPushButton::clicked, this, [=](){number_pressed(".");});
+
+    //Brackets
+    connect(ui->pushButton_lbr, &QPushButton::clicked, this, [=](){number_pressed("(");});
+    connect(ui->pushButton_rbr, &QPushButton::clicked, this, [=](){number_pressed(")");});
+    connect(ui->pushButton_colon, &QPushButton::clicked, this, [=](){number_pressed(":");});
+
+    //decimal point
     auto action = new QAction(this);
     action->setShortcuts({ tr(","), tr(".") });
     this->addAction(action);
-    connect(action, &QAction::triggered, [=](){ ui->pushButton_point->animateClick(); number_pressed(",");});
+    connect(action, &QAction::triggered, [=](){ ui->pushButton_point->animateClick();});
     
     //square root
-    connect(ui->pushButton_sqrt, &QPushButton::clicked, this, [=](){number_pressed("√");});
+    connect(ui->pushButton_sqrt, &QPushButton::clicked, this, [=](){number_pressed("root(");});
 
     //constants
     connect(ui->pushButton_e, &QPushButton::clicked, this, [=](){number_pressed("e");});
-    connect(ui->pushButton_pi, &QPushButton::clicked, this, [=](){number_pressed("π");});
-
-    //square
-    connect(ui->pushButton_square, &QPushButton::clicked, this, [=](){number_pressed("²");});
+    connect(ui->pushButton_pi, &QPushButton::clicked, this, [=](){number_pressed("pi");});
 
     //exponent
     connect(ui->pushButton_power, &QPushButton::clicked, this, [=](){number_pressed("^");});
