@@ -48,6 +48,10 @@ double calcLib::tan(double n) {
     return std::tan(n);
 }
 
+double calcLib::sqrt(double num) {
+    return std::sqrt(num);
+}
+
 double calcLib::mod(double lhs, double rhs) {
     double div = lhs/rhs;
     double intpart;
@@ -173,15 +177,15 @@ void calcLib::solveUnaryPlusMinus(std::vector<Token> &tokens){
     }
 }
 
-static std::map<std::string, double> constants{
+static const std::map<std::string, double> constants{
         {"pi", M_PI},
         {"e", M_E}
 };
 
 void calcLib::solveConstants(std::vector<Token> &tokens, const Token& constant){
-    for(auto token = tokens.begin(); token != tokens.end(); token++) {
-        if (*token == constant){
-            *token = Token{Token_type::e_number, constants[std::get<std::string>(token->value)]};
+    for(auto &token : tokens) {
+        if (token == constant){
+            token = Token{Token_type::e_number, constants.at(std::get<std::string>(token.value))};
         }
     }
 }
@@ -233,6 +237,10 @@ double calcLib::calculateFunction(double num, const Token& function) {
         return calcLib::cos(num);
     } else if(std::get<std::string>(function.value) == "tan") {
         return calcLib::tan(num);
+    } else if(std::get<std::string>(function.value) == "sqrt") {
+        return calcLib::sqrt(num);
+    } else if(std::get<std::string>(function.value) == "root") {
+        return calcLib::sqrt(num);
     } else {
         throw std::invalid_argument("Invalid function");
     }

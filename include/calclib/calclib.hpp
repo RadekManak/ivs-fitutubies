@@ -27,6 +27,7 @@ namespace calcLib {
     double sin(double n);
     double cos(double n);
     double tan(double n);
+    double sqrt(double n);
     double pow(double base, double exponent);
     double factorial(double n);
     std::string solveEquation(const std::string &expression);
