@@ -59,6 +59,18 @@ double calcLib::mod(double lhs, double rhs) {
     return (div-intpart) * rhs;
 }
 
+double calcLib::root(double degree, double num) {
+    return pow(num, (1 / degree));
+}
+
+double calcLib::log(double base, double num) {
+    return log(num) / log(base);
+}
+
+double calcLib::log(double num) {
+    return std::log10(num);
+}
+
 double calcLib::pow(double base, double exponent) {
     return std::pow(base, exponent);
 }
@@ -169,7 +181,7 @@ void calcLib::solveUnaryPlusMinus(std::vector<Token> &tokens){
         if (token->type == Token_type::e_sub || token->type == Token_type::e_add){
             auto previous = token-1;
             auto next = token+1;
-            if (previous->type != Token_type::e_number && next->type == Token_type::e_number){
+            if ((previous->type != Token_type::e_number && previous->type != Token_type::e_rbracket) && next->type == Token_type::e_number){
                 next->value = calculateUnaryOperation(std::get<double>(next->value), *token);
                 tokens.erase(token);
             }
@@ -233,33 +245,53 @@ void calcLib::solveRightAssociativeUnary(std::vector<Token>& tokens, const Token
     }
 }
 
-double calcLib::calculateFunction(double num, const Token& function) {
-    if(std::get<std::string>(function.value) == "sin") {
-        return calcLib::sin(num);
-    } else if(std::get<std::string>(function.value) == "cos") {
-        return calcLib::cos(num);
-    } else if(std::get<std::string>(function.value) == "tan") {
-        return calcLib::tan(num);
-    } else if(std::get<std::string>(function.value) == "sqrt") {
-        return calcLib::sqrt(num);
-    } else if(std::get<std::string>(function.value) == "root") {
-        return calcLib::sqrt(num);
-    } else {
-        throw std::invalid_argument("Invalid function");
+double calcLib::calculateFunction(const std::vector<Token>& parameters, const Token& function) {
+    if (parameters.size() == 1){
+        Token param = parameters.at(0);
+        double num = std::get<double>(param.value);
+        if(std::get<std::string>(function.value) == "sin") {
+            return calcLib::sin(num);
+        } else if(std::get<std::string>(function.value) == "cos") {
+            return calcLib::cos(num);
+        } else if(std::get<std::string>(function.value) == "tan") {
+            return calcLib::tan(num);
+        } else if(std::get<std::string>(function.value) == "sqrt") {
+            return calcLib::sqrt(num);
+        } else if(std::get<std::string>(function.value) == "root") {
+            return calcLib::sqrt(num);
+        } else if(std::get<std::string>(function.value) == "log") {
+            return calcLib::log(num);
+        }
+    } else if (parameters.size() == 2){
+        Token param = parameters.at(0);
+        Token param2 = parameters.at(1);
+        if(std::get<std::string>(function.value) == "root") {
+            return calcLib::root(std::get<double>(param.value), std::get<double>(param2.value));
+        } else if(std::get<std::string>(function.value) == "log") {
+            return calcLib::log(std::get<double>(param.value), std::get<double>(param2.value));
+        }
     }
+    throw std::invalid_argument("Invalid function");
 }
 
 void calcLib::solveFunctions(std::vector<Token>& tokens){
     for(auto token = tokens.begin()+1; token != tokens.end(); token++) {
-        auto previous = token - 1;
-        if (previous->type == Token_type::e_symbol && token->type == Token_type::e_lbracket){
+        auto functionName = token - 1;
+        if (functionName->type == Token_type::e_symbol && token->type == Token_type::e_lbracket){
             auto next = token+1;
             auto rbrace = next+1;
-            if (next->type == Token_type::e_number && rbrace->type == Token_type::e_rbracket){
-                *previous = Token{Token_type::e_number, calculateFunction(std::get<double>(next->value), *previous)};
-                tokens.erase(token);
-                tokens.erase(token);
-                tokens.erase(token);
+            std::vector<Token> parameters;
+            if (next->type == Token_type::e_number && (rbrace->type == Token_type::e_rbracket || rbrace->type == Token_type::e_colon)){
+                while (next->type != Token_type::e_rbracket){
+                parameters.push_back(*next);
+                    next +=1;
+                    if (next->type == Token_type::e_colon){
+                        next +=1;
+                    }
+                }
+                rbrace = next;
+                tokens.erase(token, rbrace+1);
+                *functionName = Token{Token_type::e_number, calculateFunction(parameters, *functionName)};
                 token = tokens.begin();
             } else {
                 throw std::invalid_argument("Function end not found");
