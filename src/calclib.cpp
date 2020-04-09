@@ -33,6 +33,9 @@ double calcLib::mul(double lhs, double rhs) {
 }
 
 double calcLib::div(double lhs, double rhs) {
+    if (rhs == 0){
+        throw std::overflow_error("Divide by zero");
+    }
     return lhs / rhs;
 }
 
@@ -53,18 +56,18 @@ double calcLib::sqrt(double num) {
 }
 
 double calcLib::mod(double lhs, double rhs) {
-    double div = lhs/rhs;
+    double div = calcLib::div(lhs, rhs);
     double intpart;
     modf(div, &intpart);
     return (div-intpart) * rhs;
 }
 
 double calcLib::root(double degree, double num) {
-    return pow(num, (1 / degree));
+    return pow(num, calcLib::div(1,degree));
 }
 
 double calcLib::log(double base, double num) {
-    return log(num) / log(base);
+    return calcLib::div(log(num),log(base));
 }
 
 double calcLib::log(double num) {
@@ -230,6 +233,8 @@ std::string calcLib::solveEquation(const std::string &expression) {
         return std::to_string(std::get<double>(tokens[0].value));
     } catch(std::invalid_argument &err) {
         return "Err";
+    } catch(std::overflow_error &err) {
+        return "Division by zero";
     }
 }
 
