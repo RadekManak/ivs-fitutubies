@@ -177,15 +177,16 @@ void calcLib::solveUnaryPlusMinus(std::vector<Token> &tokens){
     }
 }
 
-static const std::map<std::string, double> constants{
+static std::map<std::string, double> variables{
         {"pi", M_PI},
-        {"e", M_E}
+        {"e", M_E},
+        {"ans", 0}
 };
 
 void calcLib::solveConstants(std::vector<Token> &tokens, const Token& constant){
     for(auto &token : tokens) {
         if (token == constant){
-            token = Token{Token_type::e_number, constants.at(std::get<std::string>(token.value))};
+            token = Token{Token_type::e_number, variables.at(std::get<std::string>(token.value))};
         }
     }
 }
@@ -199,6 +200,7 @@ std::string calcLib::solveEquation(const std::string &expression) {
         }
         solveConstants(tokens, Token{Token_type::e_symbol, "e"});
         solveConstants(tokens, Token{Token_type::e_symbol, "pi"});
+        solveConstants(tokens, Token{Token_type::e_symbol, "ans"});
         solveUnaryPlusMinus(tokens);
         solveFunctions(tokens);
         solveUnaryPlusMinus(tokens); // To solve 2*-sin(-2) we need to run twice.
@@ -212,6 +214,7 @@ std::string calcLib::solveEquation(const std::string &expression) {
         if (tokens[0].type != Token_type::e_number){
             return "Err";
         }
+        variables.at("ans") = std::get<double>(tokens[0].value);
         return std::to_string(std::get<double>(tokens[0].value));
     } catch(std::invalid_argument &err) {
         return "Err";
