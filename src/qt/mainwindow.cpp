@@ -90,6 +90,6 @@ void MainWindow::clear() {
 }
 
 void MainWindow::calculate() {
-    ui->outputLabel->setText(QString::fromStdString(calcLib::solveEquation(ui->inputLine->text().toStdString())));
+    ui->outputLabel->setText(QString::fromStdString(calc.solveEquation(ui->inputLine->text().toStdString())));
     new_expression = true;
 }

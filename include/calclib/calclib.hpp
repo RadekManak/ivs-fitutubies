@@ -18,7 +18,19 @@ public:
     inline bool operator==(const Token& rhs) const;
 };
 
-namespace calcLib {
+class calcLib {
+public:
+    std::string solveEquation(const std::string &expression);
+    enum class ResultFormat{
+        fixed,
+        variable
+    };
+    calcLib();
+    calcLib(ResultFormat format, size_t precision);
+    ResultFormat format;
+    int precision;
+private:
+    std::map<std::string, double> variables;
     double add(double lhs, double rhs);
     double sub(double lhs, double rhs);
     double mul(double lhs, double rhs);
@@ -33,8 +45,7 @@ namespace calcLib {
     double log(double base, double num);
     double log(double num);
     double factorial(double n);
-    std::string solveEquation(const std::string &expression);
-
+    std::string formatResult(double result);
     int parseEquation(const std::string &expression, std::vector<Token> &outTokens);
     double calculateBinaryOperation(double lhs, double rhs, const Token& operation);
     double calculateUnaryOperation(double num, const Token& operation);
@@ -44,4 +55,4 @@ namespace calcLib {
     void solveRightAssociativeUnary(std::vector<Token> &vector, const Token &operation);
     void solveFunctions(std::vector<Token> &tokens);
     void solveConstants(std::vector<Token> &tokens, const Token &constant);
-}
+};

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QMainWindow>
+#include "include/calclib/calclib.hpp"
 
 namespace Ui {
 class MainWindow;
@@ -14,6 +15,7 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     bool new_expression = true;
+    calcLib calc;
 
 private:
     Ui::MainWindow *ui;

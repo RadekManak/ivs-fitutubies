@@ -1,6 +1,7 @@
 #include <vector>
 #include <stdexcept>
 #include <cmath>
+#include <sstream>
 #include "calclib/calclib.hpp"
 
 using namespace std::string_literals;
@@ -192,18 +193,31 @@ void calcLib::solveUnaryPlusMinus(std::vector<Token> &tokens){
     }
 }
 
-static std::map<std::string, double> variables{
-        {"pi", M_PI},
-        {"e", M_E},
-        {"ans", 0}
-};
-
 void calcLib::solveConstants(std::vector<Token> &tokens, const Token& constant){
     for(auto &token : tokens) {
         if (token == constant){
             token = Token{Token_type::e_number, variables.at(std::get<std::string>(token.value))};
         }
     }
+}
+
+std::string calcLib::formatResult(double result){
+    std::ostringstream ostringstream;
+    ostringstream.precision(precision);
+    ostringstream << std::fixed;
+    ostringstream << result;
+    std::string string_num = ostringstream.str();
+    if (format == ResultFormat::variable){
+        if (string_num.find('.')){
+            while(*(string_num.end()-1) == '0'){
+                string_num.erase(string_num.end()-1, string_num.end());
+            }
+        }
+        if(*(string_num.end()-1) == '.'){
+            string_num.erase(string_num.end()-1, string_num.end());
+        }
+    }
+    return string_num;
 }
 
 std::string calcLib::solveEquation(const std::string &expression) {
@@ -230,7 +244,7 @@ std::string calcLib::solveEquation(const std::string &expression) {
             return "Err";
         }
         variables.at("ans") = std::get<double>(tokens[0].value);
-        return std::to_string(std::get<double>(tokens[0].value));
+        return formatResult(std::get<double>(tokens[0].value));
     } catch(std::invalid_argument &err) {
         return "Err";
     } catch(std::overflow_error &err) {
@@ -303,4 +317,17 @@ void calcLib::solveFunctions(std::vector<Token>& tokens){
             }
         }
     }
+}
+
+calcLib::calcLib(ResultFormat format, size_t precision){
+    variables = std::map<std::string, double>{
+            {"pi", M_PI},
+            {"e", M_E},
+            {"ans", 0}
+    };
+    this->format = format;
+    this->precision = precision;
+};
+
+calcLib::calcLib() : calcLib(ResultFormat::variable, 8){
 }
