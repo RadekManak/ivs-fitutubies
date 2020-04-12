@@ -3,6 +3,8 @@
 #include <QMainWindow>
 #include "include/calclib/calclib.hpp"
 
+#include <QTextEdit>
+
 namespace Ui {
 class MainWindow;
 }
@@ -24,4 +26,7 @@ public slots:
     void number_pressed(const QString &value);
     void clear();
     void calculate();
+private slots:
+    void on_actionExit_triggered();
+    void on_actionDisplay_user_guide_triggered();
 };
