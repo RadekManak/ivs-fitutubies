@@ -93,3 +93,47 @@ void MainWindow::calculate() {
     ui->outputLabel->setText(QString::fromStdString(calc.solveEquation(ui->inputLine->text().toStdString())));
     new_expression = true;
 }
+
+//void MainWindow::on_actionDisplay_guide_triggered()
+//{
+//    QTextEdit* message = new QTextEdit();
+//    message->setWindowFlags(Qt::Window);
+//    message->setReadOnly(true);
+//    message->append("Here goes the user guide.");
+//    message->show();
+//}
+
+void MainWindow::on_actionExit_triggered()
+{
+    QApplication::quit();
+}
+
+void MainWindow::on_actionDisplay_user_guide_triggered()
+{
+    QTextEdit* message = new QTextEdit();
+    message->setWindowFlags(Qt::Window);
+    message->setWindowTitle("User Guide");
+    message->setReadOnly(true);
+    message->append("-----User guide");
+    //message->show();
+    message->append("Use this calculator in order to perform basic, or slightly advanced mathematical calculations.\n\n");
+    message->append("-----Type numbers");
+    message->append("In order to express values simply press the numerical ‘0’ to ‘9’ buttons to display necessary digits.\n\n");
+    message->append("-----Go decimal");
+    message->append("Make sure to use ‘.’ to separate mantissa and the exponent, in order to work with decimal numbers.\n\n");
+    message->append("-----Use constants");
+    message->append("There is no need to remember endless constants since this calculator has them ready for you. In order to work with Pi press ‘π’ and ‘e’ for Euler’s number.\n\n");
+    message->append("-----Perform operations");
+    message->append("In order to make use of calculator’s full potential, you can employ a variety of operations, ranging from arithmetic, goniometric, to logarithmic ones. Insert appropriate symbol between the values to  accomplish a desired operation.\n\n");
+    message->append("-----Separate the expressions");
+    message->append("When working with advanced operations, it is necessary to separate the arguments. Follow the example root(power:base) .\n\n");
+    message->append("-----Adjust priority");
+    message->append("In order to ensure proper priority of individual sub-expressions, surround them using the bracket buttons. Use ‘(’ at the beginning of an expression and ‘)’ at the end of it. \n\n");
+    message->append("-----Correct mistakes");
+    message->append("Any typos, incorrect numbers or previous results can be easily corrected. In order to make the display clear, press the ‘C’ button.\n\n");
+    message->append("-----Get the result");
+    message->append("The result of entered expression can be calculated and displayed using the ‘=’ button.\n\n");
+    message->append("For any further information please refer to User manual for Fitutubies calculator");
+
+    message->show();
+}
