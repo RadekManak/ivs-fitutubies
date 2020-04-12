@@ -1136,10 +1136,37 @@ QPushButton:focus {
      <x>0</x>
      <y>0</y>
      <width>491</width>
-     <height>27</height>
+     <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuUser_guide">
+    <property name="title">
+     <string>User guide</string>
+    </property>
+    <addaction name="actionDisplay_user_guide"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuUser_guide"/>
   </widget>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionDisplay_user_guide">
+   <property name="text">
+    <string>Display guide</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

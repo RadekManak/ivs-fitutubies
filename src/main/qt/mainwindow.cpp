@@ -93,3 +93,19 @@ void MainWindow::calculate() {
     ui->outputLabel->setText(QString::fromStdString(calc.solveEquation(ui->inputLine->text().toStdString())));
     new_expression = true;
 }
+
+void MainWindow::on_actionExit_triggered()
+{
+    QApplication::quit();
+}
+
+void MainWindow::on_actionDisplay_user_guide_triggered()
+{
+    QTextEdit* message = new QTextEdit();
+    message->setWindowFlags(Qt::Window);
+    message->setWindowTitle("User Guide");
+    message->setReadOnly(true);
+    message->append("Place for user guide");
+
+    message->show();
+}
