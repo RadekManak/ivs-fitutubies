@@ -236,10 +236,10 @@ std::string calcLib::solveEquation(const std::string &expression) {
         solveRightAssociativeUnary(tokens, Token{Token_type::e_none, "!"});
         solveBinaryOperation(tokens, Token{Token_type::e_none, "%"}, false);
         solveBinaryOperation(tokens, Token{Token_type::e_pow, "^"}, true);
-        solveBinaryOperation(tokens, Token{Token_type::e_mul, "*"}, false);
         solveBinaryOperation(tokens, Token{Token_type::e_div, "/"}, false);
-        solveBinaryOperation(tokens, Token{Token_type::e_add, "+"},false);
+        solveBinaryOperation(tokens, Token{Token_type::e_mul, "*"}, false);
         solveBinaryOperation(tokens, Token{Token_type::e_sub, "-"},false);
+        solveBinaryOperation(tokens, Token{Token_type::e_add, "+"},false);
         if (tokens[0].type != Token_type::e_number){
             return "Err";
         }
