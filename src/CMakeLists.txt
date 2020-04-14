@@ -34,21 +34,21 @@ set(CMAKE_AUTOMOC ON)
 # Create code from a list of Qt designer ui files
 set(CMAKE_AUTOUIC ON)
 
-add_library(calclib STATIC src/calclib.cpp include/calclib/calclib.hpp)
+add_library(calclib STATIC main/calclib.cpp include/calclib/calclib.hpp)
 target_include_directories(calclib PUBLIC include)
 target_include_directories(calclib PRIVATE lib/lexertk)
 
 add_executable(fcalc
-        src/calc.cpp
-        src/qt/mainwindow.cpp
-        src/qt/mainwindow.h
-        src/qt/mainwindow.ui
+		main/calc.cpp
+		main/qt/mainwindow.cpp
+		main/qt/mainwindow.h
+		main/qt/mainwindow.ui
         )
 
 target_link_libraries(fcalc PUBLIC calclib)
 
 add_executable(calclib_test
-	src/test/calclib_test.cpp
+		test/calclib_test.cpp
 )
 target_link_libraries(calclib_test calclib)
 target_link_libraries(calclib_test gtest_main)
@@ -56,5 +56,5 @@ target_link_libraries(calclib_test gtest_main)
 find_package(Qt5Widgets CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Widgets)
 
-add_executable(fcalc_profiling src/profiling.cpp)
+add_executable(fcalc_profiling main/profiling.cpp)
 target_link_libraries(fcalc_profiling PUBLIC calclib)
