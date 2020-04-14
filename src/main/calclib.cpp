@@ -40,16 +40,16 @@ double calcLib::div(double lhs, double rhs) {
     return lhs / rhs;
 }
 
-double calcLib::sin(double n) {
-    return std::sin(n);
+double calcLib::sin(double num) {
+    return std::sin(num);
 }
 
-double calcLib::cos(double n) {
-    return std::cos(n);
+double calcLib::cos(double num) {
+    return std::cos(num);
 }
 
-double calcLib::tan(double n) {
-    return std::tan(n);
+double calcLib::tan(double num) {
+    return std::tan(num);
 }
 
 double calcLib::sqrt(double num) {
@@ -79,24 +79,24 @@ double calcLib::pow(double base, double exponent) {
     return std::pow(base, exponent);
 }
 
-double calcLib::factorial(double n) {
+double calcLib::factorial(double num) {
     double intpart;
-    if (n < 0 || modf(n, &intpart) != 0.0){
+    if (num < 0 || modf(num, &intpart) != 0.0){
         return NAN;
     }
-    if (n > 100){
+    if (num > 100){
         return INFINITY;
     }
-    if (n <= 1){
+    if (num <= 1){
         return 1;
     }
-    return n * factorial(n-1);
+    return num * factorial(num - 1);
 }
 
-int calcLib::parseEquation(const std::string &expression, std::vector<Token> &outTokens){
+int calcLib::parseEquation(std::string_view expression, std::vector<Token> &outTokens){
     lexertk::generator generator;
 
-    if (!generator.process(expression))
+    if (!generator.process(expression.data()))
     {
         std::cout << "Failed to lex: " << expression << std::endl;
         return 1;
@@ -220,7 +220,7 @@ std::string calcLib::formatResult(double result){
     return string_num;
 }
 
-std::string calcLib::solveEquation(const std::string &expression) {
+std::string calcLib::solveEquation(std::string_view expression) {
     try {
         std::vector<Token> tokens;
         int result = parseEquation(expression, tokens);
@@ -233,7 +233,7 @@ std::string calcLib::solveEquation(const std::string &expression) {
         solveUnaryPlusMinus(tokens);
         solveFunctions(tokens);
         solveUnaryPlusMinus(tokens); // To solve 2*-sin(-2) we need to run twice.
-        solveRightAssociativeUnary(tokens, Token{Token_type::e_none, "!"});
+        solveLeftAssociativeUnary(tokens, Token{Token_type::e_none, "!"});
         solveBinaryOperation(tokens, Token{Token_type::e_none, "%"}, false);
         solveBinaryOperation(tokens, Token{Token_type::e_pow, "^"}, true);
         solveBinaryOperation(tokens, Token{Token_type::e_div, "/"}, false);
@@ -252,7 +252,7 @@ std::string calcLib::solveEquation(const std::string &expression) {
     }
 }
 
-void calcLib::solveRightAssociativeUnary(std::vector<Token>& tokens, const Token& operation) {
+void calcLib::solveLeftAssociativeUnary(std::vector<Token>& tokens, const Token& operation) {
     while(true){
         auto token = std::find_if(tokens.begin(), tokens.end(), [&](const Token &token){return token == operation;});
         if (token == tokens.end() || token == tokens.begin()){break;}
