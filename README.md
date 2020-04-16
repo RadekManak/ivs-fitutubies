@@ -1,7 +1,7 @@
 Prostředí
 ---------
 
-sUbuntu 64bit
+Ubuntu 64bit
 
 Autoři
 ------
