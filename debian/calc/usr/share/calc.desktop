@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Calc
+Genericname=Calc
+Exec=/usr/bin/Calc
+TryExec=/usr/bin/Calc
+Icon=/usr/share/icons/calc.xpm
+Terminal=true
+Type=Application
+Categories=Utility;
+Keywords=Math;
