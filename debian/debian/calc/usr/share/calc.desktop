@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=fcalc
+Genericname=fcalc
+Exec=/usr/bin/fcalc
+TryExec=/usr/bin/fcalc
+Icon=/usr/share/icons/calc.xpm
+Terminal=true
+Type=Application
+Categories=Utility;
+Keywords=Math;

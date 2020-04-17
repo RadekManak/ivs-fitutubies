@@ -1,0 +1,8 @@
+Package: Calculator
+Version: 1.0
+Architecture: all
+Essential: no
+Priority: optional
+Depends: TODO
+Maintainer: Matej Mistik
+Description: This is basic math calculator.
