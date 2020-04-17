@@ -114,8 +114,11 @@ int calcLib::parseEquation(std::string_view expression, std::vector<Token> &outT
     lexertk::helper::commutative_inserter ci;
     ci.process(generator);
 
-    while(!generator.finished()){
-        outTokens.emplace_back(Token::fromLexertk(generator.next_token()));
+    // generator.nextToken() returns invalid pointer after ~40 tokens.
+    for (std::size_t i = 0; i < generator.size(); ++i)
+    {
+        lexertk::token t = generator[i];
+        outTokens.push_back(Token::fromLexertk(t));
     }
 
     return 0;
