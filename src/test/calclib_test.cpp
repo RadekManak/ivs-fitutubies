@@ -93,3 +93,17 @@ TEST(CalcLibTest, solve_equation_factorial) {
     EXPECT_EQ(calcLib::solveEquation("10!"), "3628800.000000");   //   3628800
     EXPECT_EQ(calcLib::solveEquation("0!"), "1.000000");          //   1
 }
+
+TEST(CalcLibTest, solve_equation_mixed) {
+    EXPECT_EQ(calcLib::solveEquation("1*2+12/4-3!"), "-1.000000");
+    EXPECT_EQ(calcLib::solveEquation("sin(90)+tan(90)*2"), "-3.096404");                    //  -3.09640416081592616006
+    EXPECT_EQ(calcLib::solveEquation("9!*cos(300)"), "-8018.421204");                       //  -8018.42120384882912301175
+    EXPECT_EQ(calcLib::solveEquation("13^2/0+420"), "div by zero");
+    EXPECT_EQ(calcLib::solveEquation("13*cos(-15)*(-12+3)"), "88.883486");                  //   88.88348580448208904023
+    EXPECT_EQ(calcLib::solveEquation("(sin(1150)+1)*(-tan(-13)/0.03)"), "18.152969");       //   18.15296946214586313561
+    EXPECT_EQ(calcLib::solveEquation("(-1+13^2)/((4%tan(15*8))!)"), "33.594432");           //   33.59443231144799462668
+    EXPECT_EQ(calcLib::solveEquation("(cos(-15)+8.45)/(2^5)-1*12/24+16)"), "0.740322");     //   0.74032225272316183519
+    EXPECT_EQ(calcLib::solveEquation("(10!-15^5)*(13%3-(-14)-14.09)"), " 2611176.750000");  //   2611176.75
+    EXPECT_EQ(calcLib::solveEquation("(12!-cos(45)-3^6)/(4^2-4!+8)"), "div by zero");
+}
+    
