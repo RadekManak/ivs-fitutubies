@@ -2,7 +2,7 @@
 #include "gtest/gtest.h"
 
 using namespace ::testing;
-calcLib calc{calc.ResultFormat::fixed, 8};
+calcLib calc{calcLib::ResultFormat::fixed, 8};
 
 TEST(CalcLibTest, Numbers) {
     EXPECT_EQ(calc.solveEquation("0"), "0.00000000");
@@ -17,7 +17,7 @@ TEST(CalcLibTest, Precedence) {
     EXPECT_EQ(calc.solveEquation("2*5/2"), "5.00000000");
     EXPECT_EQ(calc.solveEquation("9-3^2"), "0.00000000");
     EXPECT_EQ(calc.solveEquation("12+3!-17"), "1.00000000");
-    //EXPECT_EQ(calc.solveEquation("7/3*3"), "7.00000000");
+    EXPECT_EQ(calc.solveEquation("7/3*3"), "7.00000000");
 }
 
 TEST(CalcLibTest, Addition) {
@@ -53,25 +53,25 @@ TEST(CalcLibTest, Division) {
 }
 
 TEST(CalcLibTest, Sine) {
-    EXPECT_EQ(calc.solveEquation("sin(90)"), "0.89399666");
-    EXPECT_EQ(calc.solveEquation("sin(-90)"), "-0.89399666");
+    EXPECT_EQ(calc.solveEquation("sin(90)"), "1.00000000");
+    EXPECT_EQ(calc.solveEquation("sin(-90)"), "-1.00000000");
     EXPECT_EQ(calc.solveEquation("sin(0)"), "0.00000000");
-    EXPECT_EQ(calc.solveEquation("sin(pi)"), "0.00000000");
+    EXPECT_EQ(calc.solveEquation("sin(pi)"), "0.05480367");
 }
 
 TEST(CalcLibTest, Cosine) {
-    EXPECT_EQ(calc.solveEquation("cos(90)"), "-0.44807362");
-    EXPECT_EQ(calc.solveEquation("cos(-90)"), "-0.44807362");
+    EXPECT_EQ(calc.solveEquation("cos(90)"), "0.00000000");
+    EXPECT_EQ(calc.solveEquation("cos(-90)"), "0.00000000");
     EXPECT_EQ(calc.solveEquation("cos(0)"), "1.00000000");
-    EXPECT_EQ(calc.solveEquation("cos(pi)"), "-1.00000000");
+    EXPECT_EQ(calc.solveEquation("cos(pi)"), "0.99849715");
 }
 
 TEST(CalcLibTest, Tangent) {   
-    EXPECT_EQ(calc.solveEquation("tan(90)"), "-1.99520041");
-    EXPECT_EQ(calc.solveEquation("tan(-90)"), "1.99520041");
+    EXPECT_EQ(calc.solveEquation("tan(90)"), "Division by zero");
+    EXPECT_EQ(calc.solveEquation("tan(-90)"), "Division by zero");
     EXPECT_EQ(calc.solveEquation("tan(0)"), "0.00000000");
-    EXPECT_EQ(calc.solveEquation("tan(pi)"), "0.00000000");
-    EXPECT_EQ(calc.solveEquation("tan(pi/2)"), "Undefined tan domain");
+    EXPECT_EQ(calc.solveEquation("tan(pi)"), "0.05488615");
+    EXPECT_EQ(calc.solveEquation("tan(15)"), "0.26794919");
 }
 
 TEST(CalcLibTest, Modulus) {
@@ -105,13 +105,13 @@ TEST(CalcLibTest, Factorial) {
 TEST(CalcLibTest, Square_root) {
     EXPECT_EQ(calc.solveEquation("root(9)"), "3.00000000");
     EXPECT_EQ(calc.solveEquation("root(21)"), "4.58257569");
-    EXPECT_EQ(calc.solveEquation("root(-21)"), "Undefined root domain");
+    EXPECT_EQ(calc.solveEquation("root(-21)"), "root: Undefined for argument domain");
 }
 
 TEST(CalcLibTest, Mixed) {
     EXPECT_EQ(calc.solveEquation("1*2+12/4-3!"), "-1.00000000");
-    EXPECT_EQ(calc.solveEquation("sin(90)+tan(90)*2"), "-3.09640416");
-    EXPECT_EQ(calc.solveEquation("9!*cos(300)"), "-8018.42120385");
+    EXPECT_EQ(calc.solveEquation("sin(90)+tan(42)*2"), "2.80080809");
+    EXPECT_EQ(calc.solveEquation("9!*cos(300)"), "181440.00000000");
     EXPECT_EQ(calc.solveEquation("13^2/0+420"), "Division by zero");
 }
 
@@ -123,19 +123,15 @@ TEST(CalcLibTest, Constants) {
 TEST(CalcLibTest, Ans) {
     calc.solveEquation("1*2+3");
     EXPECT_EQ(calc.solveEquation("ans"), "5.00000000");
- 
-    calc.solveEquation("sin(90)+tan(90)*2");
-    EXPECT_EQ(calc.solveEquation("ans"), "-3.09640416");
-    
-    calc.solveEquation("9!*cos(300)");
-    EXPECT_EQ(calc.solveEquation("ans"), "-8018.42120385");
+    EXPECT_EQ(calc.solveEquation("ans*5"), "25.00000000");
+    EXPECT_EQ(calc.solveEquation("cos(ans)"), "0.90630779");
 }
-    
+
+// Enable when implementing brackets
 TEST(CalcLibTest, DISABLED_brackets) { 
-    EXPECT_EQ(calc.solveEquation("13*cos(-15)*(-12+3)"), "88.88348580");
+    EXPECT_EQ(calc.solveEquation("13*cos(-15)*(-12+3)"), "-113.01332168");
     EXPECT_EQ(calc.solveEquation("(sin(1150)+1)*(-tan(-13)/0.03)"), "18.15296946");
-    EXPECT_EQ(calc.solveEquation("(-1+13^2)/((4%tan(15*8))!)"), "33.59443231");
-    EXPECT_EQ(calc.solveEquation("(cos(-15)+8.45)/(2^5)-1*12/24+16)"), "0.74032225");
-    EXPECT_EQ(calc.solveEquation("(10!-15^5)*(13%3-(-14)-14.09)"), " 2611176.75000000");
+    EXPECT_EQ(calc.solveEquation("(-1+13^2)/((4%tan(15*8))!)"), "14.92711089");
     EXPECT_EQ(calc.solveEquation("(12!-cos(45)-3^6)/(4^2-4!+8)"), "Division by zero");
+    EXPECT_EQ(calc.solveEquation("tan(pi/2)"), "Division by zero");
 }
