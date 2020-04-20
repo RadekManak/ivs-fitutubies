@@ -35,25 +35,29 @@ double calcLib::mul(double lhs, double rhs) {
 
 double calcLib::div(double lhs, double rhs) {
     if (rhs == 0){
-        throw std::overflow_error("Divide by zero");
+        throw std::overflow_error("Division by zero");
     }
     return lhs / rhs;
 }
 
+#define M_DEGREE M_PI/180
 double calcLib::sin(double num) {
-    return std::sin(num);
+    return std::sin(num*M_DEGREE);
 }
 
 double calcLib::cos(double num) {
-    return std::cos(num);
+    return std::cos(num*M_DEGREE);
 }
 
 double calcLib::tan(double num) {
-    return std::tan(num);
+    if (num == 90 || num == -90){
+        throw std::overflow_error("Division by zero");
+    }
+    return std::tan(num*M_DEGREE);
 }
 
 double calcLib::sqrt(double num) {
-    return std::sqrt(num);
+    return root(2, num);
 }
 
 double calcLib::mod(double lhs, double rhs) {
@@ -64,6 +68,9 @@ double calcLib::mod(double lhs, double rhs) {
 }
 
 double calcLib::root(double degree, double num) {
+    if (num < 0){
+        throw std::overflow_error("root: Undefined for argument domain");
+    }
     return pow(num, calcLib::div(1,degree));
 }
 
@@ -188,7 +195,8 @@ void calcLib::solveUnaryPlusMinus(std::vector<Token> &tokens){
         if (token->type == Token_type::e_sub || token->type == Token_type::e_add){
             auto previous = token-1;
             auto next = token+1;
-            if ((previous->type != Token_type::e_number && previous->type != Token_type::e_rbracket) && next->type == Token_type::e_number){
+            if ((previous->type != Token_type::e_number && previous->type != Token_type::e_rbracket
+            && !(*previous == Token{Token_type::e_none, "!"})) && next->type == Token_type::e_number){
                 next->value = calculateUnaryOperation(std::get<double>(next->value), *token);
                 tokens.erase(token);
             }
@@ -251,7 +259,7 @@ std::string calcLib::solveEquation(std::string_view expression) {
     } catch(std::invalid_argument &err) {
         return "Err";
     } catch(std::overflow_error &err) {
-        return "Division by zero";
+        return err.what();
     }
 }
 

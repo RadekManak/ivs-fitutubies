@@ -102,21 +102,21 @@ private:
     static double mod(double lhs, double rhs);
 
     /**
-     * Calculates the sine of a number in radians
+     * Calculates the sine of a number in degrees
      * @param num
      * @return sine of num
      */
     static double sin(double num);
 
     /**
-     * Calculates the cosine of a number in radians
+     * Calculates the cosine of a number in degrees
      * @param num
      * @return cosine of num
      */
     static double cos(double num);
 
     /**
-     * Calculates the tangents of a number in radians
+     * Calculates the tangents of a number in degrees
      * @param num
      * @return tangents of num
      */
