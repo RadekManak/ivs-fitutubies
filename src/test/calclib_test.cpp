@@ -3,6 +3,8 @@
 
 using namespace ::testing;
 calcLib calc{calcLib::ResultFormat::fixed, 8};
+calcLib calc_default;
+calcLib calc_long_format{calcLib::ResultFormat::fixed, 15};
 
 TEST(CalcLibTest, Numbers) {
     EXPECT_EQ(calc.solveEquation("0"), "0.00000000");
@@ -134,4 +136,17 @@ TEST(CalcLibTest, DISABLED_brackets) {
     EXPECT_EQ(calc.solveEquation("(-1+13^2)/((4%tan(15*8))!)"), "14.92711089");
     EXPECT_EQ(calc.solveEquation("(12!-cos(45)-3^6)/(4^2-4!+8)"), "Division by zero");
     EXPECT_EQ(calc.solveEquation("tan(pi/2)"), "Division by zero");
+}
+
+TEST(CalcLibTest, Floating_decimal_point) {
+    EXPECT_EQ(calc_default.solveEquation("1.00000"), "1");
+    EXPECT_EQ(calc_default.solveEquation("1.455120000"), "1.45512");
+    EXPECT_EQ(calc_default.solveEquation("-31.234000"), "-31.234");
+}
+
+TEST(CalcLibTest, Long_format_result) {
+    EXPECT_EQ(calc_long_format.solveEquation("3.3"), "3.300000000000000");
+    EXPECT_EQ(calc_long_format.solveEquation("root(21)"), "4.582575694955840");
+    EXPECT_EQ(calc_long_format.solveEquation("cos(13)"), "0.974370064785235");
+    EXPECT_EQ(calc_long_format.solveEquation("1.4567890987654*3.34567890987654"), "4.873948563877450");
 }
