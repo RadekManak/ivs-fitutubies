@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>userHelp.css</file>
+        <file>userHelp.html</file>
+    </qresource>
+</RCC>
