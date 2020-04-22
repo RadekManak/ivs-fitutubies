@@ -155,7 +155,6 @@ private:
 
     /**
      * Calculates the common base 10 logarithm
-     * @param base
      * @param num
      * @return logarithm of num with base 10
      */
