@@ -238,6 +238,9 @@ std::string calcLib::solveEquation(std::string_view expression) {
         if (result == 1){
             return "Syntax error";
         }
+        if (tokens.empty()){
+            return formatResult(variables.at("ans"));
+        }
         solveVariable(tokens, Token{Token_type::e_symbol, "e"});
         solveVariable(tokens, Token{Token_type::e_symbol, "pi"});
         solveVariable(tokens, Token{Token_type::e_symbol, "ans"});
@@ -251,7 +254,7 @@ std::string calcLib::solveEquation(std::string_view expression) {
         solveBinaryOperation(tokens, Token{Token_type::e_mul, "*"}, false);
         solveBinaryOperation(tokens, Token{Token_type::e_sub, "-"},false);
         solveBinaryOperation(tokens, Token{Token_type::e_add, "+"},false);
-        if (tokens[0].type != Token_type::e_number){
+        if (tokens[0].type != Token_type::e_number || tokens.empty() || tokens.size() > 1){
             return "Err";
         }
         variables.at("ans") = std::get<double>(tokens[0].value);
@@ -260,6 +263,8 @@ std::string calcLib::solveEquation(std::string_view expression) {
         return "Err";
     } catch(std::overflow_error &err) {
         return err.what();
+    } catch(...) {
+        return "Unhandled error in library";
     }
 }
 
