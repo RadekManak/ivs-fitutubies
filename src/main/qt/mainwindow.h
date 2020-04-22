@@ -23,6 +23,7 @@ private:
     ManualWindow* helpWindow;
 
 public slots:
+    void keyPressEvent(QKeyEvent *e);
     void number_pressed(const QString &value);
     void clear();
     void calculate();
