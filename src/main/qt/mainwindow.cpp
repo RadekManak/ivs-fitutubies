@@ -81,12 +81,15 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::number_pressed(const QString &value) {
+    ui->inputLine->setFocus();
+    int tc = ui->inputLine->cursorPosition();
     if (new_expression){ // Clear result
         ui->inputLine->setText(value);
         new_expression = false;
         return;
     }
-    ui->inputLine->setText(ui->inputLine->text() + value);
+    ui->inputLine->setText(ui->inputLine->text().insert(tc, value));
+    ui->inputLine->setCursorPosition(tc + 1);
 }
 
 void MainWindow::clear() {
