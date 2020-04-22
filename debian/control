@@ -1,0 +1,13 @@
+Source: calc
+Section: math	
+Priority: optional
+Maintainer: Matej Mistik <xmisti00@stud.fit.vutbr.cz>
+Build-Depends: debhelper (>= 10), cmake, qtdeclarative5-dev, qt5-qmake, qtbase5-dev
+Standards-Version: 4.1.2
+Homepage: https://github.com/RadekManak/ivs-fitutubies
+
+Package: calc
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Basic Math calculator
+ created by team IVS-Fitutubies in C++.

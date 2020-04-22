@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Qt;Utility;
+Version=1.0
+Exec=FitutubiesCalculator
+GenericName=Calculator
+Icon=calc.xpm
+Name=FitutubiesCalculator
+Type=Application
+X-KDE-StartupNotify=false
+

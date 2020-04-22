@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Tools;
+Exec=fcalc
+GenericName=Fcalc
+Icon=/usr/share/icons/hicolor/32x32/apps/calc.xpm
+Name=Fcalc
+Type=Application
+X-KDE-StartupNotify=false
+

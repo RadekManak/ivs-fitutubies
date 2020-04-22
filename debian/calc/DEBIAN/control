@@ -1,0 +1,8 @@
+Package: calc
+Version: 1.0
+Architecture: any
+Maintainer: Matej Mistik <xmisti00@stud.fit.vutbr.cz>
+Depends:
+Section: math
+Priority: extra
+Description: Basic Math calculator
