@@ -1,3 +1,4 @@
+#include <QtCore/QSettings>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -8,6 +9,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    readSettings();
+
+    // Menubar
+    connect(ui->actionUser_Help, &QAction::triggered, this, &MainWindow::displayUserGuide);
+    connect(ui->actionExit, &QAction::triggered, this, &MainWindow::close);
 
     //action buttons
     connect(ui->pushButton_c, &QPushButton::clicked, this, &MainWindow::clear);
@@ -82,8 +88,6 @@ void MainWindow::number_pressed(const QString &value) {
     ui->inputLine->setText(ui->inputLine->text() + value);
 }
 
-
-
 void MainWindow::clear() {
     ui->inputLine->setText("0");
     new_expression = true;
@@ -94,18 +98,28 @@ void MainWindow::calculate() {
     new_expression = true;
 }
 
-void MainWindow::on_actionExit_triggered()
+void MainWindow::closeEvent(QCloseEvent *event)
 {
-    QApplication::quit();
+    QSettings settings("fitutubies", "calculator");
+    settings.setValue(this->objectName()+"/geometry", saveGeometry());
+    settings.setValue(this->objectName()+"/windowState", saveState());
+    QMainWindow::closeEvent(event);
 }
 
-void MainWindow::on_actionDisplay_user_guide_triggered()
+void MainWindow::readSettings()
 {
-    QTextEdit* message = new QTextEdit();
-    message->setWindowFlags(Qt::Window);
-    message->setWindowTitle("User Guide");
-    message->setReadOnly(true);
-    message->append("Place for user guide");
+    QSettings settings("fitutubies", "calculator");
+    restoreGeometry(settings.value(this->objectName()+"/geometry").toByteArray());
+    restoreState(settings.value(this->objectName()+"/windowState").toByteArray());
+}
 
-    message->show();
+void MainWindow::displayUserGuide()
+{
+    if (helpWindow != nullptr){
+        helpWindow->raise();
+        helpWindow->setFocus(Qt::ActiveWindowFocusReason);
+    } else {
+        helpWindow = new HelpWindow(this);
+    }
+    helpWindow->show();
 }

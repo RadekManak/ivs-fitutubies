@@ -33,6 +33,8 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 # Create code from a list of Qt designer ui files
 set(CMAKE_AUTOUIC ON)
+# Add resource files
+set(CMAKE_AUTORCC ON)
 
 add_library(calclib STATIC main/calclib.cpp include/calclib/calclib.hpp)
 target_include_directories(calclib PUBLIC include)
@@ -43,6 +45,10 @@ add_executable(fcalc
 		main/qt/mainwindow.cpp
 		main/qt/mainwindow.h
 		main/qt/mainwindow.ui
+		main/qt/helpwindow.cpp
+		main/qt/helpwindow.h
+		main/qt/helpwindow.ui
+		main/qt/resources/resources.qrc
         )
 
 target_link_libraries(fcalc PUBLIC calclib)
