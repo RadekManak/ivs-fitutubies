@@ -231,8 +231,9 @@ std::string calcLib::formatResult(double result){
     return string_num;
 }
 
-std::string calcLib::solveEquation(std::string_view expression) {
+std::string calcLib::solveEquation(std::string expression) {
     try {
+        std::replace(expression.begin(), expression.end(), ',', '.');
         std::vector<Token> tokens;
         int result = parseEquation(expression, tokens);
         if (result == 1){
