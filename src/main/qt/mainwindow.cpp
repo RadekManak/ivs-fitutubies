@@ -72,12 +72,17 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //exponent
     connect(ui->pushButton_power, &QPushButton::clicked, this, [=](){number_pressed("^");});
+    
     ui->outputLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *e) {
+    ui->inputLine->setFocus();
 }
 
 void MainWindow::number_pressed(const QString &value) {
