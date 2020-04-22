@@ -58,7 +58,7 @@ public:
      * @param expression string
      * @return solved expression string or error message
      */
-    std::string solveEquation(std::string_view expression);
+    std::string solveEquation(std::string expression);
 
 private:
     /**
