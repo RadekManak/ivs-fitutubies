@@ -1,5 +1,6 @@
 #include <QtCore/QSettings>
 #include <QtCore/QFile>
+#include <QCloseEvent>
 #include "helpwindow.h"
 #include "ui_helpwindow.h"
 
@@ -9,14 +10,7 @@ HelpWindow::HelpWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     readSettings();
-    QFile css(":/userHelp.css");
-    css.open(QIODevice::ReadOnly);
-    QFile html(":/userHelp.html");
-    html.open(QIODevice::ReadOnly);
-    ui->textBrowser->setStyleSheet(css.readAll());
-    ui->textBrowser->setHtml(html.readAll());
-    css.close();
-    html.close();
+    ui->webBrowser->setUrl(QUrl("qrc:/userHelp.html"));
 }
 
 HelpWindow::~HelpWindow()
@@ -29,7 +23,7 @@ void HelpWindow::closeEvent(QCloseEvent *event)
     QSettings settings("fitutubies", "calculator");
     settings.setValue(this->objectName()+"/geometry", saveGeometry());
     settings.setValue(this->objectName()+"/windowState", saveState());
-    this->hide();
+    event->accept();
 }
 
 void HelpWindow::readSettings()

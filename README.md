@@ -1,7 +1,9 @@
 Prostředí
 ---------
 
-Ubuntu 64bit
+Ubuntu 18.04 64bit
+
+build dependencies: `cmake git make qt5base-dev qtwebengine5-dev`
 
 Autoři
 ------
