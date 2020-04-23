@@ -148,9 +148,6 @@ QPushButton:focus {
     <property name="text">
      <string>0</string>
     </property>
-    <property name="shortcut">
-     <string>0</string>
-    </property>
    </widget>
    <widget class="QPushButton" name="pushButton_equals">
     <property name="geometry">
@@ -183,9 +180,6 @@ QPushButton:focus {
     </property>
     <property name="text">
      <string>=</string>
-    </property>
-    <property name="shortcut">
-     <string>Return</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_factorial">
@@ -319,9 +313,6 @@ QPushButton:focus {
     <property name="text">
      <string>+</string>
     </property>
-    <property name="shortcut">
-     <string>+</string>
-    </property>
    </widget>
    <widget class="QPushButton" name="pushButton_1">
     <property name="geometry">
@@ -353,9 +344,6 @@ QPushButton:focus {
 </string>
     </property>
     <property name="text">
-     <string>1</string>
-    </property>
-    <property name="shortcut">
      <string>1</string>
     </property>
    </widget>
@@ -391,9 +379,6 @@ QPushButton:focus {
     <property name="text">
      <string>2</string>
     </property>
-    <property name="shortcut">
-     <string>2</string>
-    </property>
    </widget>
    <widget class="QPushButton" name="pushButton_3">
     <property name="geometry">
@@ -425,9 +410,6 @@ QPushButton:focus {
 </string>
     </property>
     <property name="text">
-     <string>3</string>
-    </property>
-    <property name="shortcut">
      <string>3</string>
     </property>
    </widget>
@@ -463,9 +445,6 @@ QPushButton:focus {
     <property name="text">
      <string>6</string>
     </property>
-    <property name="shortcut">
-     <string>6</string>
-    </property>
    </widget>
    <widget class="QPushButton" name="pushButton_5">
     <property name="geometry">
@@ -497,9 +476,6 @@ QPushButton:focus {
 </string>
     </property>
     <property name="text">
-     <string>5</string>
-    </property>
-    <property name="shortcut">
      <string>5</string>
     </property>
    </widget>
@@ -535,9 +511,6 @@ QPushButton:focus {
     <property name="text">
      <string>4</string>
     </property>
-    <property name="shortcut">
-     <string>4</string>
-    </property>
    </widget>
    <widget class="QPushButton" name="pushButton_subtraction">
     <property name="geometry">
@@ -570,9 +543,6 @@ QPushButton:focus {
     </property>
     <property name="text">
      <string>−</string>
-    </property>
-    <property name="shortcut">
-     <string>-</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_sqrt">
@@ -739,9 +709,6 @@ QPushButton:focus {
     <property name="text">
      <string>×</string>
     </property>
-    <property name="shortcut">
-     <string>*</string>
-    </property>
     <property name="autoDefault">
      <bool>false</bool>
     </property>
@@ -781,9 +748,6 @@ QPushButton:focus {
     <property name="text">
      <string>7</string>
     </property>
-    <property name="shortcut">
-     <string>7</string>
-    </property>
    </widget>
    <widget class="QPushButton" name="pushButton_8">
     <property name="geometry">
@@ -817,9 +781,6 @@ QPushButton:focus {
     <property name="text">
      <string>8</string>
     </property>
-    <property name="shortcut">
-     <string>8</string>
-    </property>
    </widget>
    <widget class="QPushButton" name="pushButton_9">
     <property name="geometry">
@@ -851,9 +812,6 @@ QPushButton:focus {
 </string>
     </property>
     <property name="text">
-     <string>9</string>
-    </property>
-    <property name="shortcut">
      <string>9</string>
     </property>
    </widget>
@@ -955,9 +913,6 @@ QPushButton:focus {
     <property name="text">
      <string>÷</string>
     </property>
-    <property name="shortcut">
-     <string>/</string>
-    </property>
    </widget>
    <widget class="QPushButton" name="pushButton_modulus">
     <property name="geometry">
@@ -989,9 +944,6 @@ QPushButton:focus {
 </string>
     </property>
     <property name="text">
-     <string>%</string>
-    </property>
-    <property name="shortcut">
      <string>%</string>
     </property>
    </widget>
@@ -1026,9 +978,6 @@ QPushButton:focus {
     </property>
     <property name="text">
      <string>c</string>
-    </property>
-    <property name="shortcut">
-     <string>Backspace</string>
     </property>
    </widget>
    <widget class="QLabel" name="outputLabel">
