@@ -1,6 +1,7 @@
 #include <QtCore/QSettings>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QKeyEvent>
 
 #include "calclib/calclib.hpp"
 
@@ -58,10 +59,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_colon, &QPushButton::clicked, this, [=](){number_pressed(":");});
 
     //decimal point
-    auto action = new QAction(this);
-    action->setShortcuts({ tr(","), tr(".") });
-    this->addAction(action);
-    connect(action, &QAction::triggered, [=](){ ui->pushButton_point->animateClick();});
+    connect(ui->pushButton_point, &QPushButton::clicked, [=](){ ui->pushButton_point->animateClick();});
     
     //square root
     connect(ui->pushButton_sqrt, &QPushButton::clicked, this, [=](){number_pressed("root(");});
@@ -72,6 +70,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //exponent
     connect(ui->pushButton_power, &QPushButton::clicked, this, [=](){number_pressed("^");});
+
+    auto calculateAction = new QAction(this);
+    calculateAction->setShortcuts({tr("Enter"), tr("Return") });
+    this->addAction(calculateAction);
+    connect(calculateAction, &QAction::triggered,this,  &MainWindow::calculate);
     
     ui->outputLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
 }
@@ -82,29 +85,27 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *e) {
-    ui->inputLine->setFocus();
+    if (!ui->inputLine->hasFocus() && e->text() != " " && e->text() != "" && e->text().data()->isPrint()){
+        std::cout << ">" << e->text().toStdString() << "<";
+        number_pressed(e->text());
+    }
 }
 
 void MainWindow::number_pressed(const QString &value) {
     ui->inputLine->setFocus();
     int tc = ui->inputLine->cursorPosition();
-    if (new_expression){ // Clear result
-        ui->inputLine->setText(value);
-        new_expression = false;
-        return;
-    }
     ui->inputLine->setText(ui->inputLine->text().insert(tc, value));
-    ui->inputLine->setCursorPosition(tc + 1);
+    ui->inputLine->setCursorPosition(tc + value.length());
 }
 
 void MainWindow::clear() {
-    ui->inputLine->setText("0");
-    new_expression = true;
+    ui->inputLine->clear();
+    ui->inputLine->setFocus();
 }
 
 void MainWindow::calculate() {
     ui->outputLabel->setText(QString::fromStdString(calc.solveEquation(ui->inputLine->text().toStdString())));
-    new_expression = true;
+    ui->inputLine->setFocus();
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
