@@ -52,15 +52,14 @@ add_executable(fcalc
         )
 
 target_link_libraries(fcalc PUBLIC calclib)
+find_package(Qt5 COMPONENTS Widgets WebEngineWidgets)
+target_link_libraries(fcalc PRIVATE Qt5::Widgets Qt5::WebEngineWidgets)
 
 add_executable(calclib_test
 		test/calclib_test.cpp
 )
 target_link_libraries(calclib_test calclib)
 target_link_libraries(calclib_test gtest_main)
-
-find_package(Qt5Widgets CONFIG REQUIRED)
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Widgets)
 
 add_executable(fcalc_profiling main/profiling.cpp)
 target_link_libraries(fcalc_profiling PUBLIC calclib)

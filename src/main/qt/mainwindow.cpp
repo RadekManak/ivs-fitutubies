@@ -1,4 +1,5 @@
 #include <QtCore/QSettings>
+#include <QtCore/QPointer>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -62,7 +63,7 @@ MainWindow::MainWindow(QWidget *parent) :
     action->setShortcuts({ tr(","), tr(".") });
     this->addAction(action);
     connect(action, &QAction::triggered, [=](){ ui->pushButton_point->animateClick();});
-    
+
     //square root
     connect(ui->pushButton_sqrt, &QPushButton::clicked, this, [=](){number_pressed("root(");});
 
@@ -115,11 +116,10 @@ void MainWindow::readSettings()
 
 void MainWindow::displayUserGuide()
 {
-    if (helpWindow != nullptr){
-        helpWindow->raise();
-        helpWindow->setFocus(Qt::ActiveWindowFocusReason);
-    } else {
-        helpWindow = new HelpWindow(this);
+    static QPointer<HelpWindow> helpWindow;
+    if (!helpWindow) {
+        helpWindow = new HelpWindow();
+        helpWindow->setAttribute(Qt::WA_DeleteOnClose);
     }
     helpWindow->show();
 }

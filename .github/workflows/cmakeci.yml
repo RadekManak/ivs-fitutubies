@@ -14,11 +14,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Update package information
+      run: sudo apt-get update
+
+    - name: Install Qt5 Dependencies
+      run: sudo apt-get install qtbase5-dev qtwebengine5-dev
+
     - name: Create Build Environment
       run: cmake -E make_directory ${{runner.workspace}}/src/build
-    
-    - name: Install Qt5-base package
-      run: sudo apt-get install qtbase5-dev
 
     - name: Configure CMake
       # Use a bash shell so we can use the same syntax for environment variable
