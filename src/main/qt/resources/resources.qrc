@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>userHelp.css</file>
-        <file>userHelp.html</file>
+        <file>userManual.css</file>
+        <file>userManual.html</file>
     </qresource>
 </RCC>

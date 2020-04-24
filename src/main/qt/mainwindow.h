@@ -1,7 +1,7 @@
 #pragma once
 
 #include <QMainWindow>
-#include "helpwindow.h"
+#include "manualwindow.h"
 #include "include/calclib/calclib.hpp"
 
 namespace Ui {
@@ -20,14 +20,14 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    HelpWindow* helpWindow;
+    ManualWindow* helpWindow;
 
 public slots:
     void number_pressed(const QString &value);
     void clear();
     void calculate();
 private slots:
-    void displayUserGuide();
+    void displayUserManual();
 
     void readSettings();
 

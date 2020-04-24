@@ -29,7 +29,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Fitutubies calculator</string>
+   <string>Fitutubies Calculator</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="sizePolicy">
@@ -1156,7 +1156,7 @@ QPushButton:focus {
   </widget>
   <action name="actionUser_Help">
    <property name="text">
-    <string>User Help</string>
+    <string>User Manual</string>
    </property>
   </action>
   <action name="actionExit">

@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     readSettings();
 
     // Menubar
-    connect(ui->actionUser_Help, &QAction::triggered, this, &MainWindow::displayUserGuide);
+    connect(ui->actionUser_Help, &QAction::triggered, this, &MainWindow::displayUserManual);
     connect(ui->actionExit, &QAction::triggered, this, &MainWindow::close);
 
     //action buttons
@@ -114,12 +114,13 @@ void MainWindow::readSettings()
     restoreState(settings.value(this->objectName()+"/windowState").toByteArray());
 }
 
-void MainWindow::displayUserGuide()
+void MainWindow::displayUserManual()
 {
-    static QPointer<HelpWindow> helpWindow;
-    if (!helpWindow) {
-        helpWindow = new HelpWindow();
-        helpWindow->setAttribute(Qt::WA_DeleteOnClose);
+    static QPointer<ManualWindow> manualWindow;
+    if (!manualWindow) {
+        manualWindow = new ManualWindow();
+        manualWindow->setAttribute(Qt::WA_DeleteOnClose);
     }
-    helpWindow->show();
+    manualWindow->show();
+    manualWindow->raise();
 }
