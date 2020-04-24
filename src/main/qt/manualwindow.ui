@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>HelpWindow</class>
- <widget class="QMainWindow" name="HelpWindow">
+ <class>ManualWindow</class>
+ <widget class="QMainWindow" name="ManualWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>480</width>
+    <width>800</width>
     <height>640</height>
    </rect>
   </property>
@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>User Help</string>
+   <string>Fitutubies Calculator - User manual</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="sizePolicy">

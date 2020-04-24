@@ -1,0 +1,42 @@
+body{
+    margin-left: 1em;
+    background-color: white;
+}
+h1, h2, h3, h4 {
+    color: #333333;
+}
+
+ul{
+    padding-left: 2em;
+}
+
+.referenceList{
+    padding-left: 1em;
+    list-style-type: none;
+}
+
+code {
+    color: #000000;
+    background-color: #faf4f2;
+}
+
+a {
+    color: #5d8bbf;
+    text-decoration: none;
+}
+
+p {
+    color: #555;
+}
+
+em{
+    color: #444;
+}
+
+strong {
+    color: #444;
+}
+
+.miniText{
+    font-size: 0.7em;
+}

@@ -45,9 +45,9 @@ add_executable(fcalc
 		main/qt/mainwindow.cpp
 		main/qt/mainwindow.h
 		main/qt/mainwindow.ui
-		main/qt/helpwindow.cpp
-		main/qt/helpwindow.h
-		main/qt/helpwindow.ui
+		main/qt/manualwindow.cpp
+		main/qt/manualwindow.h
+		main/qt/manualwindow.ui
 		main/qt/resources/resources.qrc
         )
 

@@ -1,24 +1,24 @@
 #include <QtCore/QSettings>
 #include <QtCore/QFile>
 #include <QCloseEvent>
-#include "helpwindow.h"
-#include "ui_helpwindow.h"
+#include "manualwindow.h"
+#include "ui_manualwindow.h"
 
-HelpWindow::HelpWindow(QWidget *parent) :
+ManualWindow::ManualWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::HelpWindow)
+    ui(new Ui::ManualWindow)
 {
     ui->setupUi(this);
     readSettings();
-    ui->webBrowser->setUrl(QUrl("qrc:/userHelp.html"));
+    ui->webBrowser->setUrl(QUrl("qrc:/userManual.html"));
 }
 
-HelpWindow::~HelpWindow()
+ManualWindow::~ManualWindow()
 {
     delete ui;
 }
 
-void HelpWindow::closeEvent(QCloseEvent *event)
+void ManualWindow::closeEvent(QCloseEvent *event)
 {
     QSettings settings("fitutubies", "calculator");
     settings.setValue(this->objectName()+"/geometry", saveGeometry());
@@ -26,7 +26,7 @@ void HelpWindow::closeEvent(QCloseEvent *event)
     event->accept();
 }
 
-void HelpWindow::readSettings()
+void ManualWindow::readSettings()
 {
     QSettings settings("fitutubies", "calculator");
     restoreGeometry(settings.value(this->objectName()+"/geometry").toByteArray());

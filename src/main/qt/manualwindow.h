@@ -4,19 +4,19 @@
 #include <QMainWindow>
 
 namespace Ui {
-class HelpWindow;
+class ManualWindow;
 }
 
-class HelpWindow : public QMainWindow
+class ManualWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit HelpWindow(QWidget *parent = nullptr);
-    ~HelpWindow();
+    explicit ManualWindow(QWidget *parent = nullptr);
+    ~ManualWindow();
 
 private:
-    Ui::HelpWindow *ui;
+    Ui::ManualWindow *ui;
 
     void closeEvent(QCloseEvent *event);
 
