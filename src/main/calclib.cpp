@@ -1,4 +1,6 @@
+#include <list>
 #include <vector>
+#include <iterator>
 #include <stdexcept>
 #include <cmath>
 #include <sstream>
@@ -100,7 +102,7 @@ double calcLib::factorial(double num) {
     return num * factorial(num - 1);
 }
 
-int calcLib::parseEquation(std::string_view expression, std::vector<Token> &outTokens){
+int calcLib::parseEquation(std::string_view expression, std::list<Token> &outTokens){
     lexertk::generator generator;
 
     if (!generator.process(expression.data()))
@@ -165,46 +167,45 @@ double calcLib::calculateUnaryOperation(double num, const Token& operation){
     throw std::invalid_argument(std::string("Invalid operation: " + std::get<std::string>(operation.value)));
 }
 
-void calcLib::solveBinaryOperation(std::vector<Token> &tokens, const Token& operation, bool reverse){
+void calcLib::solveBinaryOperation(std::list<Token> &tokens, const Token& operation, bool reverse){
     while(true){
-        std::vector<Token>::iterator token;
+        std::list<Token>::iterator token;
         if (reverse){
             auto reverse_token = std::find_if(tokens.rbegin(), tokens.rend(), [&](const Token &token){return token == operation;});
             if (reverse_token == tokens.rend()){break;}
-            token = reverse_token.base()-1; //Get as forward iterator
+            token = std::prev(reverse_token.base()); //Get as forward iterator
         } else {
             token = std::find_if(tokens.begin(), tokens.end(), [&](const Token &token){return token == operation;});
             if (token == tokens.end()){break;}
         }
 
-        auto previous = token-1;
-        auto next = token+1;
+        auto previous = std::prev(token);
+        auto next = std::next(token);
         if (previous->type == Token_type::e_number && next->type == Token_type::e_number){
             previous->value = calculateBinaryOperation(std::get<double>(previous->value),
                                                        std::get<double>(next->value), operation);
-            tokens.erase(token);
-            tokens.erase(token);
+            tokens.erase(token, std::next(next));
         } else {
             throw std::invalid_argument("Non number tokens around operators");
         }
     }
 }
 
-void calcLib::solveUnaryPlusMinus(std::vector<Token> &tokens){
+void calcLib::solveUnaryPlusMinus(std::list<Token> &tokens){
     for(auto token = tokens.begin(); token != tokens.end(); token++){
         if (token->type == Token_type::e_sub || token->type == Token_type::e_add){
-            auto previous = token-1;
-            auto next = token+1;
+            auto previous = std::prev(token);
+            auto next = std::next(token);
             if ((previous->type != Token_type::e_number && previous->type != Token_type::e_rbracket
             && !(*previous == Token{Token_type::e_none, "!"})) && next->type == Token_type::e_number){
                 next->value = calculateUnaryOperation(std::get<double>(next->value), *token);
-                tokens.erase(token);
+                tokens.erase(token++);
             }
         }
     }
 }
 
-void calcLib::solveVariable(std::vector<Token> &tokens, const Token& variable){
+void calcLib::solveVariable(std::list<Token> &tokens, const Token& variable){
     for(auto &token : tokens) {
         if (token == variable){
             token = Token{Token_type::e_number, variables.at(std::get<std::string>(token.value))};
@@ -234,7 +235,7 @@ std::string calcLib::formatResult(double result){
 std::string calcLib::solveEquation(std::string expression) {
     try {
         std::replace(expression.begin(), expression.end(), ',', '.');
-        std::vector<Token> tokens;
+        std::list<Token> tokens;
         int result = parseEquation(expression, tokens);
         if (result == 1){
             return "Syntax error";
@@ -255,11 +256,11 @@ std::string calcLib::solveEquation(std::string expression) {
         solveBinaryOperation(tokens, Token{Token_type::e_mul, "*"}, false);
         solveBinaryOperation(tokens, Token{Token_type::e_sub, "-"},false);
         solveBinaryOperation(tokens, Token{Token_type::e_add, "+"},false);
-        if (tokens[0].type != Token_type::e_number || tokens.empty() || tokens.size() > 1){
+        if (tokens.begin()->type != Token_type::e_number || tokens.empty() || tokens.size() > 1){
             return "Err";
         }
-        variables.at("ans") = std::get<double>(tokens[0].value);
-        return formatResult(std::get<double>(tokens[0].value));
+        variables.at("ans") = std::get<double>(tokens.begin()->value);
+        return formatResult(std::get<double>(tokens.begin()->value));
     } catch(std::invalid_argument &err) {
         return "Err";
     } catch(std::overflow_error &err) {
@@ -269,11 +270,11 @@ std::string calcLib::solveEquation(std::string expression) {
     }
 }
 
-void calcLib::solveLeftAssociativeUnary(std::vector<Token>& tokens, const Token& operation) {
+void calcLib::solveLeftAssociativeUnary(std::list<Token>& tokens, const Token& operation) {
     while(true){
         auto token = std::find_if(tokens.begin(), tokens.end(), [&](const Token &token){return token == operation;});
         if (token == tokens.end() || token == tokens.begin()){break;}
-        auto previous = token-1;
+        auto previous = std::prev(token);
         if (previous->type == Token_type::e_number){
             previous->value = calculateUnaryOperation(std::get<double>(previous->value), *token);
             tokens.erase(token);
@@ -310,23 +311,23 @@ double calcLib::calculateFunction(const std::vector<Token>& parameters, const To
     throw std::invalid_argument("Invalid function");
 }
 
-void calcLib::solveFunctions(std::vector<Token>& tokens){
-    for(auto token = tokens.begin()+1; token != tokens.end(); token++) {
-        auto functionName = token - 1;
+void calcLib::solveFunctions(std::list<Token>& tokens){
+    for(auto token = std::next(tokens.begin()); token != tokens.end(); token++) {
+        auto functionName = std::prev(token);
         if (functionName->type == Token_type::e_symbol && token->type == Token_type::e_lbracket){
-            auto next = token+1;
-            auto rbrace = next+1;
+            auto next = std::next(token);
+            auto rbrace = std::next(next);
             std::vector<Token> parameters;
             if (next->type == Token_type::e_number && (rbrace->type == Token_type::e_rbracket || rbrace->type == Token_type::e_colon)){
                 while (next->type != Token_type::e_rbracket){
                 parameters.push_back(*next);
-                    next +=1;
+                    next++;
                     if (next->type == Token_type::e_colon){
-                        next +=1;
+                        next++;
                     }
                 }
                 rbrace = next;
-                tokens.erase(token, rbrace+1);
+                tokens.erase(token, std::next(rbrace));
                 *functionName = Token{Token_type::e_number, calculateFunction(parameters, *functionName)};
                 token = tokens.begin();
             } else {
