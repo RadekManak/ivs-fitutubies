@@ -1,8 +1,9 @@
 #pragma once
 
 #include <iostream>
-#include <lib/lexertk/lexertk.hpp>
 #include <vector>
+#include <lib/lexertk/lexertk.hpp>
+#include <list>
 #include <variant>
 
 using Token_type = lexertk::token::token_type;
@@ -177,10 +178,10 @@ private:
     /**
      * Lexes string expression into Tokens
      * @param expression input mathematical expression
-     * @param outTokens Reference to vector where tokens should be stored
+     * @param outTokens Reference to list where tokens should be stored
      * @return 0 on success 1 or error
      */
-    static int parseEquation(std::string_view expression, std::vector<Token> &outTokens);
+    static int parseEquation(std::string_view expression, std::list<Token> &outTokens);
 
     /**
      * Picks the correct function to call on lhs and rhs based on operation token
@@ -217,20 +218,20 @@ private:
      * @throws std::invalid_argument if there is something else than number tokens on left or right of operation token
      * @param reverse find operations from right to left
      */
-    static void solveBinaryOperation(std::vector<Token> &tokens, const Token& operation, bool reverse);
+    static void solveBinaryOperation(std::list<Token> &tokens, const Token& operation, bool reverse);
 
     /**
      * Merges number tokens and sign tokens together. for eg: tokens{-,5} -> tokens{-5}
      * @param tokens expression tokens
      */
-    static void solveUnaryPlusMinus(std::vector<Token> &tokens);
+    static void solveUnaryPlusMinus(std::list<Token> &tokens);
 
     /**
      * Solve unary operation that has number token on the left. for eg: factorial
      * @param tokens expression tokens
      * @param operation to be solved
      */
-    static void solveLeftAssociativeUnary(std::vector<Token> &tokens, const Token &operation);
+    static void solveLeftAssociativeUnary(std::list<Token> &tokens, const Token &operation);
 
     /**
      * Function is a symbol token followed by left bracket and 0-n numbers delimited
@@ -240,12 +241,12 @@ private:
      * @throws std::invalid_arguments if start of function is followed by unexpected token
      * @param tokens expression tokens
      */
-    static void solveFunctions(std::vector<Token> &tokens);
+    static void solveFunctions(std::list<Token> &tokens);
 
     /**
      * Finds a token matching variable and replaces it with its corresponding variable.
      * @param tokens expression tokens
      * @param variable to be replaced with number
      */
-    void solveVariable(std::vector<Token> &tokens, const Token &variable);
+    void solveVariable(std::list<Token> &tokens, const Token &variable);
 };
