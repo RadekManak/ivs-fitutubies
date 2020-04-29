@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>userManual.css</file>
         <file>userManual.html</file>
+        <file>fitutubies-calculator.png</file>
     </qresource>
 </RCC>
