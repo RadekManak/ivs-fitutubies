@@ -1,4 +1,4 @@
-xlogin01 100 (základ GUI a základní mat. operace)
-xlogin02 100 (pokročilé mat. operace)
-xlogin03 90 (profiling, instalátor)
-xlogin04 110 (testy, dokumentace)
+xgulci00 100 Sabína Gulčíková (Překlady, Plán, GUI-CODE, Doxyfile, Uživatelská příručka, Mockup)
+xmanak20 100 Radek Maňák (Vedoucí, Matematická knihovna, Nápověda, Makefile, Profiling, PGO, Výpomoc ostatním členům)
+xmisti00 100 Matej Mištík (Debian package, Manuální od-instalace)
+xzatov00 100 Martin Zaťovič (Testy, GUI, GUI-CODE)
