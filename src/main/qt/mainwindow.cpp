@@ -6,6 +6,10 @@
 
 #include "calclib/calclib.hpp"
 
+/**
+ * Sets up a main window of the calculator user interface
+ * @param parent parent widget
+ */
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -86,6 +90,10 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+/**
+ * When a key is pressed, sets focus to input label and writes it
+ * @param e key event
+ */
 void MainWindow::keyPressEvent(QKeyEvent *e) {
     if (!ui->inputLine->hasFocus() && e->text() != " " && e->text() != "" && e->text().data()->isPrint()){
         std::cout << ">" << e->text().toStdString() << "<";
@@ -93,6 +101,10 @@ void MainWindow::keyPressEvent(QKeyEvent *e) {
     }
 }
 
+/**
+ * Writes the pressed number into the input label
+ * @param value pressed number or symbol
+ */
 void MainWindow::number_pressed(const QString &value) {
     ui->inputLine->setFocus();
     int tc = ui->inputLine->cursorPosition();
@@ -100,16 +112,25 @@ void MainWindow::number_pressed(const QString &value) {
     ui->inputLine->setCursorPosition(tc + value.length());
 }
 
+/**
+ * Clears the input label and sets focus to it
+ */
 void MainWindow::clear() {
     ui->inputLine->clear();
     ui->inputLine->setFocus();
 }
 
+/**
+ * Calculates the result of entered expression and displays the result
+ */
 void MainWindow::calculate() {
     ui->outputLabel->setText(QString::fromStdString(calc.solveEquation(ui->inputLine->text().toStdString())));
     ui->inputLine->setFocus();
 }
 
+/**
+ * Closes the main window and saves its size and position into a config file
+ */
 void MainWindow::closeEvent(QCloseEvent *event)
 {
     QSettings settings("fitutubies", "calculator");
@@ -118,6 +139,9 @@ void MainWindow::closeEvent(QCloseEvent *event)
     QMainWindow::closeEvent(event);
 }
 
+/**
+ * Loads the window size and position of mainwindow from a config file
+ */
 void MainWindow::readSettings()
 {
     QSettings settings("fitutubies", "calculator");
@@ -125,6 +149,9 @@ void MainWindow::readSettings()
     restoreState(settings.value(this->objectName()+"/windowState").toByteArray());
 }
 
+/**
+ * Opens a singleton window with user manual
+ */
 void MainWindow::displayUserManual()
 {
     static QPointer<ManualWindow> manualWindow;
