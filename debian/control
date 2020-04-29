@@ -9,5 +9,6 @@ Homepage: https://github.com/RadekManak/ivs-fitutubies
 Package: fitutubiescalculator
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: fitutubies-calculator supports : Basic counting (+,-,/,*), Exponentiation with Natural numbers, Root, Logarithm, Factorial, Trigonometric functions, Modulo, Variables & Constants.
- This application was developed for Practical Aspects of Software Design course at Brno University of Technology by team IVS-FITUTUBIES 1BIT. 
+Description: Qt5 based scientific calculator
+ This application was developed for Practical Aspects of Software Design course at Brno University of Technology by team Fitutubies.
+ It supports basic arithmetic operations (+,-,/,*), Exponentiation with natural numbers, Root, Logarithm, Factorial, Trigonometric functions, Modulo, Variables & Constants.
