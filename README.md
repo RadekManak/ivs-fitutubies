@@ -3,7 +3,7 @@ Prostředí
 
 Ubuntu 18.04 64bit
 
-build dependencies: `cmake git make qt5base-dev qtwebengine5-dev`
+build dependencies: `cmake git make qt5base-dev qtwebengine5-dev debhelper debmake `
 
 Autoři
 ------
