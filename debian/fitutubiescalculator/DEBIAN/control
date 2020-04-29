@@ -1,0 +1,11 @@
+Package: fitutubiescalculator
+Version: 1.0
+Architecture: amd64
+Maintainer: Matej Mistik <xmisti00@stud.fit.vutbr.cz>
+Installed-Size: 294
+Depends: libc6 (>= 2.14), libgcc1 (>= 1:3.0), libqt5core5a (>= 5.9.0~beta), libqt5gui5 (>= 5.0.2), libqt5webenginewidgets5 (>= 5.7.1), libqt5widgets5 (>= 5.0.2), libstdc++6 (>= 5.2)
+Section: math
+Priority: optional
+Homepage: https://github.com/RadekManak/ivs-fitutubies
+Description: Basic Math calculator
+ created by team IVS-Fitutubies in C++.

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
-project(fcalc LANGUAGES CXX)
+project(fitutubies-calculator LANGUAGES CXX)
 
 # Download and unpack googletest at configure time
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
@@ -40,7 +40,7 @@ add_library(calclib STATIC main/calclib.cpp include/calclib/calclib.hpp)
 target_include_directories(calclib PUBLIC include)
 target_include_directories(calclib PRIVATE lib/lexertk)
 
-add_executable(fcalc
+add_executable(fitutubies-calculator
 		main/calc.cpp
 		main/qt/mainwindow.cpp
 		main/qt/mainwindow.h
@@ -51,9 +51,9 @@ add_executable(fcalc
 		main/qt/resources/resources.qrc
         )
 
-target_link_libraries(fcalc PUBLIC calclib)
+target_link_libraries(fitutubies-calculator PUBLIC calclib)
 find_package(Qt5 COMPONENTS Widgets WebEngineWidgets)
-target_link_libraries(fcalc PRIVATE Qt5::Widgets Qt5::WebEngineWidgets)
+target_link_libraries(fitutubies-calculator PRIVATE Qt5::Widgets Qt5::WebEngineWidgets)
 
 add_executable(calclib_test
 		test/calclib_test.cpp
@@ -61,5 +61,5 @@ add_executable(calclib_test
 target_link_libraries(calclib_test calclib)
 target_link_libraries(calclib_test gtest_main)
 
-add_executable(fcalc_profiling main/profiling.cpp)
-target_link_libraries(fcalc_profiling PUBLIC calclib)
+add_executable(fitutubies-calculator_profiling main/profiling.cpp)
+target_link_libraries(fitutubies-calculator_profiling PUBLIC calclib)

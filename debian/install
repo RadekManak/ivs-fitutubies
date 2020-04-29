@@ -1,0 +1,3 @@
+/src/main/qt/resources/fitutubies-calculator.png /usr/share/icons/hicolor/128x128/apps/
+install/fitutubiescalculator.desktop /usr/share/applications
+src/build/fitutubies-calculator /usr/bin/

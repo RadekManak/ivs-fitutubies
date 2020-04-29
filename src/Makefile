@@ -25,6 +25,9 @@ test:
 doc:
 	doxygen Doxyfile
 run:
-	./build/fcalc
+	./build/fitutubies-calculator
 profile:
-	./build/fcalc_profiling
+	./build/fitutubies-calculator_profiling
+install:
+	cd ../  && dpkg-buildpackage -rfakeroot -uc -b
+	cd ../../ && mkdir -p install && mv *.* ./install
