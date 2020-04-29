@@ -9,5 +9,5 @@ Homepage: https://github.com/RadekManak/ivs-fitutubies
 Package: fitutubiescalculator
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: Basic Math calculator
- created by team IVS-Fitutubies in C++.
+Description: fitutubies-calculator supports : Basic counting (+,-,/,*), Exponentiation with Natural numbers, Root, Logarithm, Factorial, Trigonometric functions, Modulo, Variables & Constants.
+ This application was developed for Practical Aspects of Software Design course at Brno University of Technology by team IVS-FITUTUBIES 1BIT. 
