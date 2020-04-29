@@ -1,4 +1,4 @@
-xgulci00 100 Sabína Gulčíková (Překlady, Plán, GUI-CODE, Doxyfile, Uživatelská příručka, Mockup)
-xmanak20 100 Radek Maňák (Vedoucí, Matematická knihovna, Nápověda, Makefile, Profiling, PGO, Výpomoc ostatním členům)
-xmisti00 100 Matej Mištík (Debian package, Manuální od-instalace)
-xzatov00 100 Martin Zaťovič (Testy, GUI, GUI-CODE)
+xgulci00 103 Sabína Gulčíková (Překlady, Plán, GUI-CODE, Doxyfile, Uživatelská příručka, Mockup)
+xmanak20 107 Radek Maňák (Vedoucí, Matematická knihovna, Nápověda, Makefile, Profiling, PGO, Výpomoc ostatním členům)
+xmisti00 95 Matej Mištík (Debian package, Manuální od-instalace)
+xzatov00 95 Martin Zaťovič (Testy, GUI, GUI-CODE)
