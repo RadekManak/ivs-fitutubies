@@ -1,1 +1,7 @@
-tento soubor bude obsahovat rozdil mezi planem projektu a skutecnosti
+Rozdiely medzi plánom a skutočnosťou
+
+1. Nedodržiavanie termínov v požadovanom čase.
+
+2. Projekt spotrebal oveľa viac času ako sme predpokladali.
+
+3. Chceli sme spraviť projekt čo najskôr, ale narušili ho ostatné projekty a mimoriadna situácia ohľadom pandémie. Pandémia obmedzila osobné stretnutia tímu, kde sme s výpadkami nepočítali.
