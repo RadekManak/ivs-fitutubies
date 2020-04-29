@@ -14,7 +14,7 @@ Debian package is available for easy install. Download the package and\
 
 ##### From source
 You will require these build dependencies:\
-`cmake git make qt5base-dev qtwebengine5-dev debhelper debmake doxygen`
+`cmake git make qt5base-dev qtwebengine5-dev debhelper debmake doxygen graphviz`
 
 Clone the repo\
 `git clone git@github.com:RadekManak/ivs-fitutubies.git`\
