@@ -4,6 +4,10 @@
 #include "helpwindow.h"
 #include "ui_helpwindow.h"
 
+/**
+ * Sets up a window for displaying user help
+ * @param parent parent widget
+ */
 HelpWindow::HelpWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::HelpWindow)
@@ -13,11 +17,18 @@ HelpWindow::HelpWindow(QWidget *parent) :
     ui->webBrowser->setUrl(QUrl("qrc:/userHelp.html"));
 }
 
+/**
+ * Destructs the user help window
+ */
 HelpWindow::~HelpWindow()
 {
     delete ui;
 }
 
+/**
+ * Saves settings and closes event
+ * @paran event event to be closed
+ */
 void HelpWindow::closeEvent(QCloseEvent *event)
 {
     QSettings settings("fitutubies", "calculator");
@@ -26,6 +37,9 @@ void HelpWindow::closeEvent(QCloseEvent *event)
     event->accept();
 }
 
+/**
+ * Reads and loads settings
+ */
 void HelpWindow::readSettings()
 {
     QSettings settings("fitutubies", "calculator");

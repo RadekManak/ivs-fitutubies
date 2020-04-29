@@ -5,6 +5,11 @@
 
 #include "calclib/calclib.hpp"
 
+/**
+ * Sets up a main window of calculator user interface.
+ * @param parent parent widget
+ */
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -75,11 +80,19 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_power, &QPushButton::clicked, this, [=](){number_pressed("^");});
 }
 
+/**
+ * Destructs the main window
+ * 
+ */
 MainWindow::~MainWindow()
 {
     delete ui;
 }
 
+/**
+ * Writes the pressed number into the input label
+ * @param value pressed number or symbol
+ */
 void MainWindow::number_pressed(const QString &value) {
     if (new_expression){ // Clear result
         ui->inputLine->setText(value);
@@ -89,16 +102,26 @@ void MainWindow::number_pressed(const QString &value) {
     ui->inputLine->setText(ui->inputLine->text() + value);
 }
 
+/**
+ * Sets the input label to 0
+ */
 void MainWindow::clear() {
     ui->inputLine->setText("0");
     new_expression = true;
 }
 
+/**
+ * Calculates the result of entered expression and displays result
+ */
 void MainWindow::calculate() {
     ui->outputLabel->setText(QString::fromStdString(calc.solveEquation(ui->inputLine->text().toStdString())));
     new_expression = true;
 }
 
+/**
+ * Saves settings and closes an event
+ * @param event event to be closed
+ */
 void MainWindow::closeEvent(QCloseEvent *event)
 {
     QSettings settings("fitutubies", "calculator");
@@ -107,6 +130,9 @@ void MainWindow::closeEvent(QCloseEvent *event)
     QMainWindow::closeEvent(event);
 }
 
+/**
+ * Reads and loads settings
+ */
 void MainWindow::readSettings()
 {
     QSettings settings("fitutubies", "calculator");
@@ -114,6 +140,9 @@ void MainWindow::readSettings()
     restoreState(settings.value(this->objectName()+"/windowState").toByteArray());
 }
 
+/**
+ * Opens a window with user help
+ */
 void MainWindow::displayUserGuide()
 {
     static QPointer<HelpWindow> helpWindow;
