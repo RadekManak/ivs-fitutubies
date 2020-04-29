@@ -9,6 +9,7 @@ ManualWindow::ManualWindow(QWidget *parent) :
     ui(new Ui::ManualWindow)
 {
     ui->setupUi(this);
+    setWindowIcon(QIcon(":/fitutubies-calculator.png"));
     readSettings();
     ui->webBrowser->setUrl(QUrl("qrc:/userManual.html"));
 }
