@@ -4,6 +4,10 @@
 #include "manualwindow.h"
 #include "ui_manualwindow.h"
 
+/**
+ * Sets up a window for displaying user manual
+ * @param parent parent widget
+ */
 ManualWindow::ManualWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::ManualWindow)
@@ -19,6 +23,10 @@ ManualWindow::~ManualWindow()
     delete ui;
 }
 
+/**
+ * Closes the user manual window and saves its size and position into a config file
+ * @param event event to be closed
+ */
 void ManualWindow::closeEvent(QCloseEvent *event)
 {
     QSettings settings("fitutubies", "calculator");
@@ -27,6 +35,9 @@ void ManualWindow::closeEvent(QCloseEvent *event)
     event->accept();
 }
 
+/**
+ * Loads the window size and position of user manual window from a config file
+ */
 void ManualWindow::readSettings()
 {
     QSettings settings("fitutubies", "calculator");
