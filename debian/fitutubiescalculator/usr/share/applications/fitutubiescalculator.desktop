@@ -4,7 +4,7 @@ Version=1.0
 Exec=fitutubies-calculator
 GenericName=calculator
 Icon=fitutubies-calculator
-Name=Fitutubies Calculator
+Name=fitutubiescalculator
 Type=Application
 X-KDE-StartupNotify=false
 
